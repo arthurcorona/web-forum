@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,500&family=Righteous&display=swap');
 
 *{
@@ -69,4 +70,75 @@ li{
     padding-right: 1.2rem;
     margin-left: 1.5rem;
 
+=======
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,500&family=Righteous&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+h1, h4, ol {
+    margin: 0;
+}
+p {
+    margin: 1rem 0;
+}
+
+/* menu */
+.title-forum{
+    padding: 1rem;
+}
+
+.menu-nav {
+    background-color: skyblue;
+    padding: 0 2rem;
+    display: flex;
+}
+.title-thread {
+    margin-left: 0.4rem;
+    font-size: 1.2rem;
+}
+.login-button{
+    display: ;
+    width: 5rem;
+    height: 2rem;
+    float: right;  
+}
+
+li{
+    background-color: whitesmoke;
+    list-style: none;
+}
+.topics-nav {
+    background-color: skyblue;
+    padding-left: 1.5rem;
+}
+.nav-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+/* main */
+.row {
+    padding: 0.6rem 0;
+    margin-bottom:  0.2rem;
+    border-style: double;
+}
+.bottom {
+    display: flex;
+    color: grey;
+    font-size: 1.5rem;
+}
+.timestamp {
+    padding-right: 1.2rem;
+    margin-left: 1.5rem;
+
+>>>>>>> 382ed10784c1afc4e55fe17ea60f40f7dc569da4
 }
