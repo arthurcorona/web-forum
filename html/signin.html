@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style-signin.css" type="text/css" rel="stylesheet">
+    <title>Criar Conta</title>
+</head>
+<body>
+    <div class="container">
+
+        <div id="box-cadastro" class="tela-login">
+
+            <h2 class="subtitle">Cadastre-se</h2>
+            <h4>Name:</h4>
+            <input id="new-name" type="text" name="name" value="">
+            <h4>Email:</h4>
+            <input id="new-email" type="email" name="email" value=""> 
+            <h4>Password:</h4>
+            <input id="new-password" type="password" name="password" value="">
+            
+            <p>Já tem uma conta?? <b class="click" onclick="entre()">Entre</b></p>
+            <input class="input-submit" value="Register" type="submit" onclick="createUser()">
+        </div>
+
+        <div id="box-login" class="tela-login">
+            <h2 class="subtitle">Login</h2>
+            <h4>Email:</h4>
+            <input id="email" type="email" name="email" value="">
+            <h4>Password:</h4>
+            <input id="password" type="password" name="password" value="">
+            <br>
+            <input class="input-submit" value="Login" type="submit" onclick="login()">
+        </div>
+
+
+
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="../js/signin-script.js"></script>
+
+</body>
