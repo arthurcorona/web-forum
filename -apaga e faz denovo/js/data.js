@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var defaultThreads = [
     {
         id: 1,
@@ -50,7 +49,6 @@ if (localStorage && localStorage.getItem('threads')) {
     localStorage.setItem('threads', JSON.stringify(defaultThreads));
 }
 
-=======
 var defaultThreads = [
     {
         id: 1,
@@ -101,5 +99,3 @@ if (localStorage && localStorage.getItem('threads')) {
     threads = defaultThreads;
     localStorage.setItem('threads', JSON.stringify(defaultThreads));
 }
-
->>>>>>> 382ed10784c1afc4e55fe17ea60f40f7dc569da4
