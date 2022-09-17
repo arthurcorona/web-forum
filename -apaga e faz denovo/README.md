@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-# SINION
-MUITO FODA
+
 =======
 # SINION
-MUITO FODA
->>>>>>> 382ed10784c1afc4e55fe17ea60f40f7dc569da4
+em desenvolvimento
+=======
+
