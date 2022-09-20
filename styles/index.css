@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,500&family=Righteous&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #D3D3D3;
+}
+
+header{
+    display: flex;
+    background-color: #5F9EA0;
+    padding: .5rem;
+}
+
+.title-forum {
+
+}
+
+.login-link {
+    margin-left: auto;
+}
+
+.box-post{
+    background-color: black;
+    width: 80%;
+    height: max-content;
+}
+
+.login-button {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    padding: 0.2rem;
+}
+
+.post {
+    background-color: #808080;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 2rem;
+    border-radius: 12rem;
+    padding: 1rem;
+    
+}
