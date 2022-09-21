@@ -13,3 +13,34 @@ header{
     background-color: #5F9EA0;
     padding: .5rem;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    margin-top: 10%;
+    width: 20rem;
+}
+
+input, button {
+    padding: .3rem;
+    margin-bottom: .3rem;
+    width: 100%;
+}
+
+button{
+    cursor: pointer;
+    width: 100%;
+}
+
+.recover-password {
+    background-color: transparent;
+    border: none;    
+}
+
+.register {
+    background-color: transparent;
+}
