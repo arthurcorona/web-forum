@@ -36,6 +36,10 @@ button{
     width: 100%;
 }
 
+button:disabled {
+    opacity: 0.5;
+}
+
 .recover-password {
     background-color: transparent;
     border: none;    
