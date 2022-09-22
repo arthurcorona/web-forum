@@ -48,3 +48,9 @@ button:disabled {
 .register {
     background-color: transparent;
 }
+
+.error {
+    color: #977160;
+    background: #4e4848;
+    display: none;
+}

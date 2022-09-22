@@ -20,11 +20,14 @@
         <form>
             <div>
                 <div><label>Email:</label></div>
-                <input onchange="validateFields()" id="email" type="email" name="email" placeholder="email"/>
+                <input onchange="onChangeEmail()" id="email" type="email" name="email" placeholder="email"/>
+                <div class="error" id="email-error">Email é obrigatório</div>
+                <div class="error" id="email-invalid">Email é inválido</div>
             </div>
             <div>
                 <div><label>Senha:</label></div>
-                <input onchange="validateFields()" type="password" id="password" name="password" placeholder="senha"/>
+                <input onchange="onChangePassword()" type="password" id="password" name="password" placeholder="senha"/>
+                <div class="error" id="password-error">Senha é obrigatória</div>
             </div>
             <div>
                 <button class="recover-password" id="recover-password" type="button">Recuperar senha</button>
