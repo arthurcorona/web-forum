@@ -9,7 +9,7 @@ function onChangePassword() {
 }
 
 function isEmailValid() {
-    const email = document.getElementById("email").value
+    const email = form.email().value
     if(!email) {
         return false
     } 
@@ -17,27 +17,27 @@ function isEmailValid() {
 }
 
 function toggleEmailErrors() {
-    const email = document.getElementById('email').value
+    const email = form.email().value
     if (!email) {
-        document.getElementById('email-error').style.display = 'block'
+        form.emailError().style.display = 'block'
     } else {
-        document.getElementById('email-error').style.display = 'none'
+        form.emailError().style.display = 'none'
     }
 
     if(validateEmail(email)) {
-        document.getElementById('email-invalid').style.display = 'none'
+        form.emailInvalidError().style.display = 'none'
     } else {    
-        document.getElementById('email-invalid').style.display = 'block'
+        form.emailInvalidError().style.display = 'block'
     }
 
 }
 
 function togglePasswordErrors() {
-    const password = document.getElementById('password').value
+    const password = form.password().value
     if (!password) {
-        document.getElementById('password-error').style.display = 'block'
+        form.passwordError().style.display = 'block'
     } else {
-        document.getElementById('password-error').style.display = 'none'
+        form.passwordError().style.display = 'none'
     }
 }
 
@@ -47,7 +47,7 @@ function toggleButtonsDisable () {
     document.getElementById('recover-password').disabled = !emailValid
 
     const passwordValid = isPasswordValid()
-    document.getElementById('login').disabled = !emailValid || !passwordValid
+    form.loginButton().disabled = !emailValid || !passwordValid
 }
 
 function isPasswordValid() {
@@ -60,4 +60,14 @@ function isPasswordValid() {
 
 function validateEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
+}
+
+const form = {
+    email: () => document.getElementById('email'),
+    emailInvalidError: () => document.getElementById('invalid-email'),
+    emailError: () => document.getElementById('error-email'),
+    loginButton: () => document.getElementById('login'),
+    password: () => document.getElementById('password'),
+    passwordError: () => document.getElementById('password-error'),
+
 }
