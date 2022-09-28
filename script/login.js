@@ -8,6 +8,14 @@ function onChangePassword() {
     togglePasswordErrors()
 }
 
+function loginSinion() {
+    window.location.href = "../public/index.html"
+}
+
+function registerSinion() {
+    window.location.href = "../html/register.html"
+}
+
 function isEmailValid() {
     const email = form.email().value
     if(!email) {
