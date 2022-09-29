@@ -1,6 +1,0 @@
-
-=======
-# SINION
-em desenvolvimento
-=======
-
