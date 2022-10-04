@@ -16,7 +16,7 @@
         <h1 class="title-forum">SINION</h2>
     </header>   
         
-    <div class="container">
+    <div class="container centralize">
         <form>
             <div class="form-field">
                 <div><label>Email:</label></div>
@@ -30,7 +30,7 @@
                 <div class="error" id="password-error">Senha é obrigatória</div>
             </div>
             <div>
-                <button class="recover-password" id="recover-password" type="button">Recuperar senha</button>
+                <button onclick="recoverPassword()" class="recover-password" id="recover-password" type="button">Recuperar senha</button>
             </div>
             <div>
                 <button onclick="loginSinion()" id="login" type="button">Login</button>
@@ -47,5 +47,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <script src="../script/login.js"></script>
+    <script src="../script/loading.js"></script>
 </body>
 </html> 

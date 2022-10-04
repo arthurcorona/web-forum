@@ -40,11 +40,23 @@ function getErroeMessage(error) {
     if (error.code =="auth/user-not-found") {
         return "Usuário não encontrádo"
     }
+    if (error.code =="auth/wrong-password") {
+        return "senha inválida"
+    }
     return error.message
 }
  
 function registerSinion() {
-    window.location.href = "../html/register.html"
+    showLoading()
+    // window.location.href = "../html/register.html"
+}
+
+function recoverPassword() {
+    firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
+        alert('email enviado com sucesso')
+    }).catch(error => {
+        alert(getErroeMessage(error))
+    })
 }
 
 function isEmailValid() {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/login.css">
     <title>Sinion</title>
 </head>
 <body>
@@ -14,18 +14,41 @@
     </header>
     
     <main>
-        <div class="container-post">
-            <a href="../html/postar.html" class="box-post">
-                <div class="post">Postar</div>
-            </a>
+        <div class="container centralize">
+            <form class="form-field">
+                <div>
+                    <div><label>Email</label></div>
+                    <input type="email" placeholder="email" onchange="onChangeEmail()"/>
+                    <div class="error" id="error-email">Email é obrigatório</div>
+                    <div class="error" id="invalid-email">Email é inválido</div>
+                </div>
+                <div class="form-field">
+                    <div><label>Criar Senha</label></div>
+                    <input type="password" placeholder="senha" />
+                    <div class="error" id="error-password">Senha é obrigatória</div>
+                    <div class="error" id="password-min-lenght-error">Senha é inválida</div>
+                </div>
+                <div class="form-field">
+                    <div><label>confirmar Senha</label></div>
+                    <input type="password" placeholder="confirmar senha" />
+                    <div class="error" id="password-doesnt-match-error">As senhas estão diferentes</div>
+                </div>
+            
+                <div>
+                    <button disabled="true" class="button-bottom" type="button">Registrar</button>
+                </div>
+                <div>
+                    <button class="button-bottom" type="button">Login</button>
+                </div>
+
+
+            </form>
+        
         </div>
 
-
-
-
-
-        
     </main>
-
 </body>
+
+<script src="../script/register.js"></script>
+
 </html>
