@@ -1,3 +1,9 @@
+firebase.auth().onAuthStateChanged( user => {
+    if (user) {
+        window.location.href = "../public/index.html"
+    } 
+}) 
+
 function onChangeEmail() {
     toggleButtonsDisable()
     toggleEmailErrors()
@@ -29,8 +35,7 @@ function getErroeMessage(error) {
 }
  
 function registerSinion() {
-    showLoading()
-    // window.location.href = "../html/register.html"
+    window.location.href = "../html/register.html"
 }
 
 function recoverPassword() {
@@ -91,10 +96,6 @@ function isPasswordValid() {
     return true
 }
 
-function validateEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-}
-
 const form = {
     email: () => document.getElementById('email'),
     emailInvalidError: () => document.getElementById('invalid-email'),
@@ -102,5 +103,4 @@ const form = {
     loginButton: () => document.getElementById('login'),
     password: () => document.getElementById('password'),
     passwordError: () => document.getElementById('password-error'),
-
 }

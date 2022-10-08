@@ -1,3 +1,6 @@
+<!-- seguinte, vou mandar o login pro arquivo index, e o login pro index(nao posso esquecer de mudar os nomes dos arquivos) OBS: isso é caso o cara nao ensine a sumir o login quando vc logar-->
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +13,7 @@
 <body>
     <header>
         <h1 class="title-forum">SINION</h2>
-        <a class="login-link" href="../html/login.html"> <button class="login-button">login</button></a>
+        <button onclick="signOut()" class="top-button" type="button">logout</button>
     </header>
     
     <main>
@@ -20,12 +23,19 @@
             </a>
         </div>
 
-
-
-
-
-
     </main>
-
 </body>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+    <script src="../script/firebase.js"></script>
+    <script src="../script/validation.js"></script>
+    <script src="../script/auth-guard.js"></script>
+    <script src="../script/index.js"></script>
+
+
 </html>

@@ -10,7 +10,6 @@
 <body>
     <header>
         <h1 class="title-forum">SINION</h2>
-        <a class="login-link" href="../html/login.html"> <button class="login-button">login</button></a>
     </header>
     
     <main>
@@ -38,7 +37,7 @@
                     <button onclick="register()" disabled="true" id="register-button" class="button-bottom" type="button">Registrar</button>
                 </div>
                 <div>
-                    <button class="button-bottom" type="button">Login</button>
+                    <button onclick="login()" class="button-bottom" type="button">Login</button>
                 </div>
 
 
@@ -49,16 +48,13 @@
     </main>
 </body>
 
-<script src="../script/register.js"></script>
-<script src="../script/validation.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-<script src="../script/login.js"></script>
-<script src="../script/loading.js"></script>
 <script src="../script/firebase.js"></script>
+<script src="../script/validation.js"></script>
+<script src="../script/register.js"></script>
 
 </html>

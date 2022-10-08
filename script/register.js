@@ -1,3 +1,9 @@
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        window.location.href = "../public/index.html"
+    }
+})
+
 function onChangeEmail() {
     const email = form.email().value
     
@@ -52,6 +58,10 @@ function validatePasswordsMatch() {
 
 function toggleRegisterButtonDisable() {
     form.registerButton().disabled = !isFormValid()
+}
+
+function login() {
+    window.location.href = "../html/login.html"
 }
 
 function isFormValid() {
