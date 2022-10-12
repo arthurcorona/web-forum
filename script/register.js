@@ -1,3 +1,20 @@
+const form = {
+    name: () => document.getElementById('name') ,
+    email: () => document.getElementById('email'),
+    emailInvalidError: () => document.getElementById('error-email'),
+    emailError: () => document.getElementById('invalid-email'),
+    password: () => document.getElementById('password'),
+    passwordMinLength: () => document.getElementById('passord-min-length'),
+    passwordError: () => document.getElementById('error-password'),
+    confirmPassword: () => document.getElementById('confirm-password'),
+    confirmPasswordDoesntMatchError: () => document.getElementById('password-doesnt-match-error'),
+    registerButton: () => document.getElementById('register-button')
+}
+
+let emptyName = name.value.replace(/\s+/g, '')
+let arrayInputs = [name, email, password]
+
+
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         window.location.href = "../public/index.html"
@@ -104,16 +121,4 @@ function isFormValid() {
     }
 
     return true
-}
-
-const form = {
-    confirmPassword: () => document.getElementById('confirm-password'),
-    confirmPasswordDoesntMatchError: () => document.getElementById('password-doesnt-match-error'),
-    email: () => document.getElementById('email'),
-    emailInvalidError: () => document.getElementById('error-email'),
-    emailError: () => document.getElementById('invalid-email'),
-    password: () => document.getElementById('password'),
-    passwordMinLength: () => document.getElementById('passord-min-length'),
-    passwordError: () => document.getElementById('error-password'),
-    registerButton: () => document.getElementById('register-button')
 }
