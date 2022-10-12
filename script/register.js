@@ -42,6 +42,29 @@ function register() {
         })
 }
 
+function createUserInDB(name, email) {
+    let createDBUser = new Promise((resolve, reject) =>{
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection("users").doc(user.uid).set({
+                    userInfos: {
+                        name: name,
+                        email: email
+                    }
+                }).then(() => {
+                    resolve()
+                }).catch(error => {
+                    reject(error)
+                })
+            }
+            else{
+                console.log("nenhum user");
+            }
+        })
+    })
+    return createDBUser
+}
+
 function getErrorMessage(error) {
     if(error.code == "auth/email-already-in-use") {
         return "email já em uso"

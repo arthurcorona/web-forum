@@ -45,3 +45,24 @@ header{
     padding: 1rem;
     
 }
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+p {
+    margin: .5rem 0;
+}
+
+.top-bar {
+    background-color: #808080;
+}
+
+.description-post {
+    display: flex;
+}
+
+.timestamp {
+    padding-right: 1rem;
+}
