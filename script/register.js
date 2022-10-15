@@ -1,5 +1,5 @@
 const form = {
-    username: () => document.getElementById('username') ,
+    username: () => document.getElementById('username'),
     email: () => document.getElementById('email'),
     emailInvalidError: () => document.getElementById('error-email'),
     emailError: () => document.getElementById('invalid-email'),
@@ -47,13 +47,30 @@ function onChangeConfirmPassword() {
 function register() {
     const email = form.email().value
     const password = form.password().value
+    const username = form.username().value
 
+    // tentar adicionar o username no db
+    
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(() => {
-            window.location.href = "../public/index.html"
-        }).catch(error => {
-            alert(getErrorMessage(error))
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid)
+                .set({
+                    'username': username.value,
+                    'email': email.value
+                }).then(() => {
+
+                })
         })
+
+
+
+
+    // firebase.auth().UserWithEmailAndPassword(email, password)
+    //     .then(() => {
+    //         window.location.href = "../public/index.html"
+    //     }).catch(error => {
+    //         alert(getErrorMessage(error))
+    //     })
 }
 
 function getErrorMessage(error) {
