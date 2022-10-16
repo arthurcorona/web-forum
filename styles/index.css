@@ -38,7 +38,7 @@ header{
 
 .btn_account:hover {
     cursor: pointer;
-    background-color: #ddd;
+    background-color: #DDD;
 }
 
 #options_account {
@@ -58,12 +58,6 @@ header{
     cursor: pointer;
 }
 
-
-
-.signOut {
-    
-}
-
 .login-link {
     margin-left: auto;
 }
@@ -74,12 +68,6 @@ header{
     height: max-content;
 }
 
-.top-button {
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    padding: 0.2rem;
-}
-
 .post {
     background-color: #808080;
     margin-left: 4rem;
@@ -87,26 +75,40 @@ header{
     margin-top: 2rem;
     border-radius: 12rem;
     padding: 1rem;
-    
+    margin-bottom: 3rem;
+}
+/* video */
+ol{
+    list-style: none;
 }
 
-a {
+.to-threads{
     text-decoration: none;
     color: #000;
 }
 
-p {
-    margin: .5rem 0;
-}
-
-.top-bar {
-    background-color: #808080;
-}
-
-.description-post {
+.post-content {
     display: flex;
 }
 
+.paragraphs-row {
+    margin: .8rem 0;
+}
+
+.row {
+    padding: .3rem 0;
+    background-color: #BCC7C7;
+}
+
+.post-content {
+    display: flex;
+    color: #808080;
+}
+
+.test {
+    margin: 2rem 5rem;
+}
+
 .timestamp {
-    padding-right: 1rem;
+    margin-right: 5%;
 }
