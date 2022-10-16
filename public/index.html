@@ -1,8 +1,5 @@
-<!-- seguinte, vou mandar o login pro arquivo index, e o login pro index(nao posso esquecer de mudar os nomes dos arquivos) OBS: isso é caso o cara nao ensine a sumir o login quando vc logar-->
-
-
 <!-- coisas para fazer: 
-    adicionar um campo de nome ao registrar     
+    adicionar um campo de nome ao registrar    OK!
 
 -->
 
@@ -12,14 +9,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"> <!-- more icons -->
     <link rel="stylesheet" href="../styles/index.css">
     <title>Sinion</title>
 </head>
 <body>
     <header>
         <h1 class="title-forum">SINION</h2>
-            <div></div>
-        <button onclick="signOut()" class="top-button" type="button">logout</button>
+
+        
+            <a class="icon" onclick="showMenuAccount()">
+                <i class="uil uil-user icon "></i>
+            </a>
+            <div class="nav_account">
+                <div id="options_account">
+                    <button class="btn_account" onclick="goToAccount()" type="button">Conta</button>
+                    <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
+                </div>
+            </div>
+
     </header>
     
     <main>

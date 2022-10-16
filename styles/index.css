@@ -17,6 +17,50 @@ header{
 }
 
 .title-forum {
+
+} 
+
+.nav_account {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.btn_account{
+    background-color: transparent;
+    border: none;   
+
+    display: block;
+    right: 0;
+    top: 0;
+}
+
+.btn_account:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+#options_account {
+    display: none;
+}
+
+
+.icon {
+    width: 2rem ;
+    float: right;
+    display: flex;
+    font-size: 2rem;
+    margin-left: auto;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+
+
+.signOut {
     
 }
 
