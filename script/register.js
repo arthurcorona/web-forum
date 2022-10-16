@@ -11,13 +11,6 @@ const form = {
     registerButton: () => document.getElementById('register-button')
 }
 
-
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        window.location.href = "../public/index.html"
-    }
-})
-
 function onChangeEmail() {
     const email = form.email().value
     
@@ -49,29 +42,51 @@ function register() {
     const password = form.password().value
     const username = form.username().value
 
-    // tentar adicionar o username no db
-    
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            firebase.database().ref('users/' + firebase.auth().currentUser.uid)
-                .set({
-                    'username': username.value,
-                    'email': email.value
-                }).then(() => {
-
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(user=>{
+        auth.onAuthStateChanged(user =>{
+            if(user){
+                db.collection("users").doc(user.uid).set({
+                    user:{username,email}
+                }).then(()=>{
+                    console.log("funfou")
+                    window.location.href = "../public/index.html"
+                }).catch(err =>{
+                    console.log(err)
                 })
+            }else{
+                console.log("User não logado!")
+            }
         })
-
-
-
-
-    // firebase.auth().UserWithEmailAndPassword(email, password)
-    //     .then(() => {
-    //         window.location.href = "../public/index.html"
-    //     }).catch(error => {
-    //         alert(getErrorMessage(error))
-    //     })
+    }).catch((err)=>{
+        console.log(err)
+    })
 }
+
+function createUserInDB(username, email) {
+    let promise_creatDBUser = new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection("users").doc(user.uid)
+                    .set({
+                        user_infos: {
+                            username: username,
+                            email: email
+                        }
+                    }).then(() => {
+                        resolve()
+                        console.log("noite feliz");
+                    }).catch(error => {
+                        reject(err)
+                        console.log("error")
+                    })
+            }
+            else {
+                   console.log("error"); 
+            }
+        })
+    })
+}
+
 
 function getErrorMessage(error) {
     if(error.code == "auth/email-already-in-use") {

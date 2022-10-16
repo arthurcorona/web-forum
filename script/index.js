@@ -5,3 +5,9 @@ function signOut() {
         alert('erro ao fazer logout')
     })
 }
+
+console.log("");
+
+auth.onAuthStateChanged(user => {
+    console.log(user.uid);
+})
