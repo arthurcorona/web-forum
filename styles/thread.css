@@ -61,23 +61,41 @@ header{
 .login-link {
     margin-left: auto;
 }
-
-.box-post{
-    background-color: black;
-    width: 80%;
-    height: max-content;
-}
-
-.post {
-    background-color: #808080;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-top: 2rem;
-    border-radius: 12rem;
-    padding: 1rem;
-    margin-bottom: 3rem;
-}
 /* video */
+
+.thread-container {
+    padding: 1rem ;
+    margin: 2rem 5rem;
+    background-color: #BCC7C7;
+    border-radius: 12px;
+}   
+
+textarea {
+    width: 80%;
+    height: 3rem;
+}
+
+.submit_comment {
+    display: block;
+    margin: 1rem 0;
+    padding: .2rem;
+}
+
+.comments {
+    margin: 3rem 0;
+}
+
+.comment {
+    margin: 1.5rem 0;
+    background-color: #D4D3D4;
+    padding: .3rem;
+    border-radius: 12px;
+}
+
+.row {
+
+}
+
 ol{
     list-style: none;
 }
@@ -92,15 +110,7 @@ ol{
 }
 
 .paragraphs-row {
-    margin: .8rem 0;
-}
-
-.row {
-    padding: .3rem 0;
-    background-color: #BCC7C7;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 12px;
+    margin: .6rem 0;
 }
 
 .post-content {
@@ -108,10 +118,10 @@ ol{
     color: #808080;
 }
 
-.thread-container {
+.test {
     margin: 2rem 5rem;
 }
 
-.timestamp {
+.comment-ts {
     margin-right: 5%;
 }

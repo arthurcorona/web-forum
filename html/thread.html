@@ -4,55 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"> <!-- more icons -->
+    <link rel="stylesheet" href="../styles/thread.css">
+    <title>Threads</title>
 </head>
 <body>
     
+    <header>
+        <h1 class="title-forum">SINION</h2>
+
+        
+            <a class="icon" onclick="showMenuAccount()">
+                <i class="uil uil-user icon "></i>
+            </a>
+            <div class="nav_account">
+                <div id="options_account">
+                    <button class="btn_account" onclick="goToAccount()" type="button">Conta</button>
+                    <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
+                </div>
+            </div>
+
+    </header>
+
     <main>
        <div class="container">
 
         <!-- a partir do video -->
 
-        <div class="top-bar">
-            <h1>
-                SINION
-            </h1>
-        </div>
 
+        <div class="thread-container">
         <div class="thread-header">
             <h4 class="post-title">
                 war engineering
             </h4>
             <div class="post-content">
-                <p class="timestamp">
+                <p class="timestamp paragraphs-row">
                     16/10/2022
                 </p>
-                <p class="comment-count">
+                <p class="comment-count paragraphs-row">
                     18 comments
                 </p>
             </div>
         </div>
 
             <textarea></textarea>
-            <button>add comment</button>
+            <button class="submit_comment" type="submit">add comment</button>
 
 
         <div class="comments">
             <div class="comment">
                 <div class="top-comment">
-                    <p class="username">
+                    <p class="username paragraphs-row">
                         Tio Carlinhos
                     </p>
-                    <p class="timestamp">
+                    <p class="timestamp paragraphs-row">
                         16/10/2022
                     </p>
                 </div>
 
                 <div class="post-content">
-                    <p class="timestamp">
+                    <p class="comment-ts paragraphs-row">
                         16/10/2022
                     </p>
-                    <p class="comment-count">
+                    <p class="comment-count paragraphs-row">
                         18 comments
                     </p>
                 </div>
@@ -60,10 +75,35 @@
                     Comment text
                 </div>
             </div>
+
+            <div class="comment">
+                <div class="top-comment">
+                    <p class="username paragraphs-row">
+                        Tio Carlinhos
+                    </p>
+                    <p class="timestamp paragraphs-row">
+                        16/10/2022
+                    </p>
+                </div>
+
+                <div class="post-content">
+                    <p class="comment-ts paragraphs-row">
+                        16/10/2022
+                    </p>
+                    <p class="comment-count paragraphs-row">
+                        18 comments
+                    </p>
+                </div>
+                <div class="comment-content">
+                    Comment text
+                </div>
+            </div>
+
+        </div>
         </div>
     
-    
-       </div>
+
+        </div>
     </main>
 
 </body>
