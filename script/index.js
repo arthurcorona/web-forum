@@ -16,8 +16,6 @@ function signOut() {
     })
 }
 
-console.log("");
-
 auth.onAuthStateChanged(user => {
     console.log(user.uid);
 })

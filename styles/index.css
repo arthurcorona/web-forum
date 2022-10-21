@@ -16,10 +16,6 @@ header{
     padding: .5rem;
 }
 
-.title-forum {
-
-} 
-
 .nav_account {
     display: block;
     position: relative;
@@ -87,31 +83,54 @@ ol{
     color: #000;
 }
 
-.post-content {
-    display: flex;
-}
 
-.paragraphs-row {
-    margin: .8rem 0;
-}
 
+body {
+    margin: 10px 60px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+h1, h4, ol {
+    margin: 0;
+}
+p {
+    margin: 5px 0;
+}
+textarea {
+    width: 80%;
+    height: 80px;
+}
+button {
+    display: block;
+    margin: 10px 0;
+}
+.top-bar {
+    background-color: skyblue;
+    padding: 0 40px;
+}
+.main {
+    background-color: #F6F6EF;
+    padding: 10px 40px;
+}
+.comments {
+    margin: 40px 0;
+}
+.comment {
+    margin: 10px 0;
+}
 .row {
-    padding: .3rem 0;
-    background-color: #BCC7C7;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 12px;
+    padding: 5px 0;
 }
-
-.post-content {
+.bottom, .top-comment {
     display: flex;
-    color: #808080;
+    color: grey;
+    font-size: 12px;
 }
-
-.thread-container {
-    margin: 2rem 5rem;
-}
-
 .timestamp {
-    margin-right: 5%;
+    padding-right: 10px;
+}
+.comment-ts {
+    padding-left: 10px;
 }

@@ -28,82 +28,21 @@
     </header>
 
     <main>
-       <div class="container">
-            <div class="thread-container">
-            <div class="thread-header">
-                <!-- <h4 class="post-title">
-                    war engineering
-                </h4>
-                <div class="post-content">
-                    <p class="timestamp paragraphs-row">
-                        16/10/2022
-                    </p>
-                    <p class="comment-count paragraphs-row">
-                        18 comments
-                    </p>
-                </div> -->
-            </div>
 
-                <textarea></textarea>
-                <button class="submit_comment" type="submit">add comment</button>
-
-
-            <div class="comments">
-                <div class="comment">
-                    <div class="top-comment">
-                        <p class="username paragraphs-row">
-                            Tio Carlinhos
-                        </p>
-                        <p class="timestamp paragraphs-row">
-                            16/10/2022
-                        </p>
-                    </div>
-
-                    <div class="post-content">
-                        <p class="comment-ts paragraphs-row">
-                            16/10/2022
-                        </p>
-                        <p class="comment-count paragraphs-row">
-                            18 comments
-                        </p>
-                    </div>
-                    <div class="comment-content">
-                        Comment text
-                    </div>
-                </div>
-
-                <div class="comment">
-                    <div class="top-comment">
-                        <p class="username paragraphs-row">
-                            Tio Carlinhos
-                        </p>
-                        <p class="timestamp paragraphs-row">
-                            16/10/2022
-                        </p>
-                    </div>
-
-                    <div class="post-content">
-                        <p class="comment-ts paragraphs-row">
-                            16/10/2022
-                        </p>
-                        <p class="comment-count paragraphs-row">
-                            18 comments
-                        </p>
-                    </div>
-                    <div class="comment-content">
-                        Comment text
-                    </div>
-                </div>
-
-            </div>
-            </div>
         
-
-        </div>
     </main>
 
 </body>
-    <script src="../script/thread.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+    <script src="../script/firebase.js"></script>
+    <script src="../script/validation.js"></script>
+    <script src="../script/auth-guard.js"></script>
+    <script src="../script/thread.js"></script>
+    <script src="../script/index.js"></script>
 
 </html>
