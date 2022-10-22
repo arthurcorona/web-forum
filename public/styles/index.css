@@ -1,22 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,500&family=Righteous&display=swap');
 
-*{
-    padding: 0;
-    margin: 0;
-}
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    background-color: #D3D3D3;
-}
 
-header{
-    display: flex;
-    background-color: #5F9EA0;
-    padding: .5rem;
-}
 
-.nav_account {
+
+
+
+
+/* .nav_account {
     display: block;
     position: relative;
     overflow: hidden;
@@ -74,63 +64,15 @@ header{
     margin-bottom: 3rem;
 }
 /* video */
-ol{
+/* ol{
     list-style: none;
 }
 
 .to-threads{
     text-decoration: none;
     color: #000;
-}
+}  */
 
 
 
-body {
-    margin: 10px 60px;
-}
-a {
-    text-decoration: none;
-    color: black;
-}
-h1, h4, ol {
-    margin: 0;
-}
-p {
-    margin: 5px 0;
-}
-textarea {
-    width: 80%;
-    height: 80px;
-}
-button {
-    display: block;
-    margin: 10px 0;
-}
-.top-bar {
-    background-color: skyblue;
-    padding: 0 40px;
-}
-.main {
-    background-color: #F6F6EF;
-    padding: 10px 40px;
-}
-.comments {
-    margin: 40px 0;
-}
-.comment {
-    margin: 10px 0;
-}
-.row {
-    padding: 5px 0;
-}
-.bottom, .top-comment {
-    display: flex;
-    color: grey;
-    font-size: 12px;
-}
-.timestamp {
-    padding-right: 10px;
-}
-.comment-ts {
-    padding-left: 10px;
-}
+

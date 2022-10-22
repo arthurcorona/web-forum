@@ -13,29 +13,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"> <!-- more icons -->
     <link rel="stylesheet" href="/public/styles/index.css">
     <title>Sinion</title>
+    <%- include('../templates/styleGlobal.ejs')%>
 </head>
 <body>
-    <h1>Opa cheguei</h1>
-    <header>
-        <h1 class="title-forum">SINION</h2>
-
-        
-            <a class="icon" onclick="showMenuAccount()">
-                <i class="uil uil-user icon "></i>
-            </a>
-            <div class="nav_account">
-                <div id="options_account">
-                    <button class="btn_account" onclick="goToAccount()" type="button">Conta</button>
-                    <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
-                </div>
-            </div>
-
-    </header>
-    
+    <%- include('../templates/header/mainHeader.ejs')%>
+   
     <main>
         <div class="container">
 
-            <a href="../html/postar.html" class="box-post">
+            <a class="box-post">
                 <div class="post">Postar</div>
             </a>
 

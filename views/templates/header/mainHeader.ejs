@@ -1,0 +1,45 @@
+
+<style>
+    header{
+        width: 100%;
+        padding: 0.3rem 9%;
+        background-color: #00ABB3;
+    }
+    header .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header .header-content span{
+        display: flex;
+    }
+    header .header-content span button{
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: .1rem solid white;
+        padding: 0.2rem 1rem;
+        border-radius: 20px;
+        transition: 0.2s;
+    }header .header-content span button:nth-child(1){
+        margin-right: 2rem;
+    }header .header-content span button:hover{
+        background-color: white;
+        color: black;
+    }
+    header .header-content a {
+        color: white;
+    }
+</style>
+<header>
+    <div class="header-content">
+        <a href=""><h1>SINION</h1></a>
+        <span>
+            <button class="btn_account" onclick="goToAccount()" type="button">Conta</button>
+            <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
+        </span>
+    </div>
+</header>
