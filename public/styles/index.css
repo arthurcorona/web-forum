@@ -1,78 +1,17 @@
-
-
-
-
-
-
-
-
-/* .nav_account {
-    display: block;
-    position: relative;
-    overflow: hidden;
-
+main {
+    width: 100%;
 }
 
-.btn_account{
-    background-color: transparent;
-    border: none;   
-
-    display: block;
-    right: 0;
-    top: 0;
-}
-
-.btn_account:hover {
-    cursor: pointer;
-    background-color: #DDD;
-}
-
-#options_account {
-    display: none;
-}
-
-
-.icon {
-    width: 2rem ;
-    float: right;
-    display: flex;
-    font-size: 2rem;
-    margin-left: auto;
-}
-
-.icon:hover {
-    cursor: pointer;
-}
-
-.login-link {
-    margin-left: auto;
-}
-
-.box-post{
-    background-color: black;
-    width: 80%;
-    height: max-content;
-}
-
-.post {
-    background-color: #808080;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-top: 2rem;
-    border-radius: 12rem;
+.box-post {
     padding: 1rem;
-    margin-bottom: 3rem;
+    background-color: aquamarine;
+    border-radius: 12px;
+    margin: 3rem;
+    width: 60%;
+    border: none;
+    
 }
-/* video */
-/* ol{
-    list-style: none;
+
+.box-post:hover {
+    cursor: pointer;
 }
-
-.to-threads{
-    text-decoration: none;
-    color: #000;
-}  */
-
-
-
-

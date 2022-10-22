@@ -16,47 +16,24 @@
     <%- include('../templates/styleGlobal.ejs')%>
 </head>
 <body>
-<<<<<<< HEAD
     <%- include('../templates/header/mainHeader.ejs')%>
-   
-=======
-    <header>
-        <h1 class="title-forum">SINION</h2>
-
-        
-            <a class="icon" onclick="showMenuAccount()">
-                <i class="uil uil-user icon "></i>
-            </a>
-            <div class="nav_account">
-                <div id="options_account">
-                    <button class="btn_account" onclick="goToAccount()" type="button">Conta</button>
-                    <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
-                </div>
-            </div>
-
-    </header>
-    
->>>>>>> ffb437ece282570229251bbb4ce583be88c12e76
     <main>
         <div class="container">
 
-            <a class="box-post">
-                <div class="post">Postar</div>
-            </a>
+            <button onclick="createPost()" class="box-post">
+                <p class="post-">Postar</p>
+            
+
+
+            </button>
 
         </div>    
     </main>
 </body>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    
-    <script src="/public/script/firebase.js"></script>
-    <script src="/public/script/validation.js"></script>
+    <%-include('../templates/accountScripts/srcScripts.ejs')%>
+
     <script src="/public/script/auth-guard.js"></script>
     <script src="/public/script/index.js"></script>
-
 
 </html>
