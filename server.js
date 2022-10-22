@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 // const posts = require('/public/script/posts.js')
 const path = require('path')
+const apiRoute = require('./routes/api')
 
 const app = express()
 
@@ -11,6 +12,8 @@ app.set("view engine", "ejs")
 
 app.use('/public', express.static('public'))
 
+
+app.use("/api", apiRoute)
 
 
 app.get("/", (req, res) => {

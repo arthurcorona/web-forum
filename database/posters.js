@@ -1,0 +1,9 @@
+module.exports = {
+    posters: {
+        
+    },
+    
+    getAll() {
+        
+    } 
+}

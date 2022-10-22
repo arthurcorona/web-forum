@@ -1,7 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
-app.get("/all", (req, res) => {
+const app = express()
+
+router.get("/all", (req, res) => {
 
     res.json(JSON.stringify(posts.getAll()))
 
@@ -17,3 +21,6 @@ app.post("/new", bodyParser.json(), (req, res) => {
     res.send("post adicionado!")
 
 })
+
+module.exports = router
+
