@@ -1,4 +1,4 @@
-main {
+/* main {
     width: 100%;
 }
 
@@ -14,4 +14,113 @@ main {
 
 .box-post:hover {
     cursor: pointer;
+} */
+.publics-section{
+    width: 100%;
+    padding: 4rem 3rem;
+}
+.publics-edit{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+}
+.img-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 3px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.img-user img{
+    height: 100%;
+    width: auto;
+}
+.publics-edit button{
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 0.6rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.threads-container{
+    margin-top: 2rem;
+    width: 100%;
+}
+.threads-container li{
+    background-color: white;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+}
+.popUp_container{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.745);
+    backdrop-filter: blur(1px);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}.thread-PopUp{
+    width: 500px;
+    max-height: 3000px;
+    background-color: rgb(47, 43, 43);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+}
+.img-user-popUp{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    
+}
+.thread-PopUp section{
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.351);
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.title-popUp{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.img-user-popUp img{
+    height: 100%;
+    width: auto;
+}
+.thread-form{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.thread-form input, .thread-form textarea{
+    padding: 0.4rem 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }

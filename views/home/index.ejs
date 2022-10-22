@@ -17,18 +17,46 @@
 </head>
 <body>
     <%- include('../templates/header/mainHeader.ejs')%>
-    <main>
+    <!-- <main>
         <div class="container">
 
             <button onclick="createPost()" class="box-post">
                 <p class="post-">Postar</p>
-            
-
 
             </button>
 
         </div>    
-    </main>
+    </main> -->
+    <div class="popUp_container">
+        <div class="thread-PopUp">
+            <p class="title-popUp">Criar Publicação</p>
+            <section>
+                <div class="img-user-popUp">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                </div>
+                <p class="username-popup">Augusto Caetano</p>
+            </section>
+            <form class="thread-form">
+                <input type="text" class="threadTitle-input" placeholder="Titulo">
+                <textarea>
+                    
+                </textarea>
+            </form>
+        </div>
+    </div>
+    <section class="publics-section">
+        <main onclick="openPop_Up()" class="publics-edit">
+            <div class="img-user">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+            </div>
+            <button class="box-edit">Criar publicação</button>
+        </main>
+        <ul class="threads-container">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
 </body>
 
     <%-include('../templates/accountScripts/srcScripts.ejs')%>
