@@ -35,23 +35,27 @@ function submitThread() {
 
 }
 
+function onChangeThreadSubmit() {
+  toggleSubmitThreadButtonDisable()
+}
+
 function toggleSubmitThreadButtonDisable() {
   form.submitThreadButton().disabled = !validateSubmit()
 }
 
 function validateSubmit() {
   const title = form.titleThread().value
-  const text = form.textThread().value
 
-  if(!title || !text) {
-    return false
-  }
+ if (!title || title.length < 6) {
+  return false
+ }
 
-  if(text > 15) {
-    return false
-  }
+ const text = form.textThread().value
 
-    return true
+ if (!text || text.length < 10) {
+  return false
+ }
+ return true
 }
 
 // deixar o botão de enviar desvalidado, para depois validar ele (dps q as funcoes estiverem prontas)

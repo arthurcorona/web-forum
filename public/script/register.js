@@ -37,6 +37,49 @@ function onChangeConfirmPassword() {
     toggleRegisterButtonDisable()
 }
 
+
+function getErrorMessage(error) {
+    if(error.code == "auth/email-already-in-use") {
+        return "email já em uso"
+    }
+    return error.message
+}
+
+function validatePasswordsMatch() {
+    const password = form.password().value
+    const confirmPassword = form.confirmPassword().value
+
+    form.confirmPasswordDoesntMatchError().style.display = password == confirmPassword ? "none" : "block"
+}
+
+function toggleRegisterButtonDisable() {
+    form.registerButton().disabled = !isFormValid()
+}
+
+function login() {
+    window.location.href = "/login"
+}
+
+function isFormValid() {
+    const email = form.email().value
+    if (!email || !validateEmail(email)) {
+        return false
+    }
+
+    const password = form.password().value
+    if (!password || password.length < 6) {
+        return false
+    }
+
+    const confirmPassword = form.confirmPassword().value
+    if (password != confirmPassword) {
+        return false
+    }
+
+    return true
+}
+
+
 function register() {
     const email = form.email().value
     const password = form.password().value
@@ -85,46 +128,4 @@ function createUserInDB(username, email) {
             }
         })
     })
-}
-
-
-function getErrorMessage(error) {
-    if(error.code == "auth/email-already-in-use") {
-        return "email já em uso"
-    }
-    return error.message
-}
-
-function validatePasswordsMatch() {
-    const password = form.password().value
-    const confirmPassword = form.confirmPassword().value
-
-    form.confirmPasswordDoesntMatchError().style.display = password == confirmPassword ? "none" : "block"
-}
-
-function toggleRegisterButtonDisable() {
-    form.registerButton().disabled = !isFormValid()
-}
-
-function login() {
-    window.location.href = "/login"
-}
-
-function isFormValid() {
-    const email = form.email().value
-    if (!email || !validateEmail(email)) {
-        return false
-    }
-
-    const password = form.password().value
-    if (!password || password.length < 6) {
-        return false
-    }
-
-    const confirmPassword = form.confirmPassword().value
-    if (password != confirmPassword) {
-        return false
-    }
-
-    return true
 }

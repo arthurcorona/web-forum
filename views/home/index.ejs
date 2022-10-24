@@ -35,10 +35,9 @@
             </section>
 
             <form class="thread-form">
-                <input type="text" id="title-thread" class="threadTitle-input" placeholder="Titulo">
-                <textarea>
-                    
-                </textarea>
+                <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
+                <input onchange="onChangeThreadSubmit()" type="text" id="text-thread" class="thread-text" placeholder="Texto">
+
             </form>
 
             <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>

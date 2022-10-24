@@ -153,3 +153,11 @@
 #submit-thread {
     
 }
+
+#submit-thread:disabled {
+    background-color: ;
+}
+
+.thread-text {
+    height: 4rem;
+}
