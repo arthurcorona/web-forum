@@ -17,35 +17,36 @@
 </head>
 <body>
     <%- include('../templates/header/mainHeader.ejs')%>
-    <!-- <main>
-        <div class="container">
 
-            <button onclick="createPost()" class="box-post">
-                <p class="post-">Postar</p>
-
-            </button>
-
-        </div>    
-    </main> -->
-    <div class="popUp_container">
+    <div id="popup-container">
         <div class="thread-PopUp">
-            <p class="title-popUp">Criar Publicação</p>
+            
+                <span class="close-popUp" onclick="closePopUp()">
+                <i class="uil uil-multiply"></i>
+            </span>
+
+            <p class="title-popUp">Criar Publicação</p>    
+
             <section>
                 <div class="img-user-popUp">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
                 </div>
                 <p class="username-popup">Augusto Caetano</p>
             </section>
+
             <form class="thread-form">
-                <input type="text" class="threadTitle-input" placeholder="Titulo">
+                <input type="text" id="title-thread" class="threadTitle-input" placeholder="Titulo">
                 <textarea>
                     
                 </textarea>
             </form>
+
+            <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
         </div>
     </div>
+
     <section class="publics-section">
-        <main onclick="openPop_Up()" class="publics-edit">
+        <main onclick="openPopUp()" class="publics-edit">
             <div class="img-user">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
             </div>

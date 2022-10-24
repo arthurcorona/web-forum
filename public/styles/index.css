@@ -15,6 +15,7 @@
 .box-post:hover {
     cursor: pointer;
 } */
+
 .publics-section{
     width: 100%;
     padding: 4rem 3rem;
@@ -66,7 +67,7 @@
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
 }
-.popUp_container{
+#popup-container{
     position: fixed;
     top: 0;
     width: 100vw;
@@ -74,10 +75,11 @@
     background-color: rgba(0, 0, 0, 0.745);
     backdrop-filter: blur(1px);
     z-index: 99;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-}.thread-PopUp{
+}
+.thread-PopUp{
     width: 500px;
     max-height: 3000px;
     background-color: rgb(47, 43, 43);
@@ -123,4 +125,31 @@
     padding: 0.4rem 1rem;
     font-size: 1.3rem;
     margin-bottom: 1rem;
+}
+
+.submit-thread {
+    padding: .4rem;
+    background-color: white;
+    border: none;
+    margin-left: 45%;
+    
+}
+/* 
+.submit-thread:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+} */
+
+
+.close-popUp {
+    margin-left: 0;
+}
+
+.close-popUp:hover {
+    cursor: pointer;
+}
+
+#submit-thread {
+    
 }
