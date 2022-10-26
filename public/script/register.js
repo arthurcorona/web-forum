@@ -113,7 +113,8 @@ function createUserInDB(username, email) {
                     .set({
                         user_infos: {
                             username: username,
-                            email: email
+                            email: email,
+                            img_user: "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png",
                         }
                     }).then(() => {
                         resolve()

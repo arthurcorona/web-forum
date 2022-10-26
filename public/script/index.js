@@ -28,13 +28,50 @@ function goToAccount() {
 }
 
 function openPopUp() {
-  document.getElementById("popup-container").style.display = 'flex'
+  document.body.innerHTML += `<div id="popup-container">
+                                <div class="thread-PopUp">
+                                    
+                                        <span class="close-popUp" onclick="closePopUp()">
+                                        <i class="uil uil-multiply"></i>
+                                    </span>
+
+                                    <p class="title-popUp">Criar Publicação</p>    
+
+                                    <section>
+                                        <div class="img-user-popUp">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                                        </div>
+                                        <p class="username-popup">Augusto Caetano</p>
+                                    </section>
+
+                                    <form class="thread-form">
+                                        <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
+                                        <label>Digite seu texto:</label>
+                                        <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
+                                    </form>
+                                    <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+                                </div>
+                              </div>`
 }
 
 function closePopUp() {
-  document.getElementById("popup-container").style.display = 'none'
+  document.getElementById("popup-container").remove()
 }
+appendUsername()
+function appendUsername() {
+  // verificando se o user está on
+  auth.onAuthStateChanged(userOn => {
+    if(userOn){
+      let userInDB = db.collection("users").doc(userOn.uid)
+      userInDB.get().then((doc) => { 
+          console.log(doc.data())
+      })
+    }else{
+      console.log("User não encontrado!")
+    }
+  })
 
+}
 function onChangeThreadSubmit() {
   toggleSubmitThreadButtonDisable()
 }

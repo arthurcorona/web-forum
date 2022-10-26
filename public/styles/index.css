@@ -63,7 +63,7 @@
     background-color: rgba(0, 0, 0, 0.745);
     backdrop-filter: blur(1px);
     z-index: 99;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
 }

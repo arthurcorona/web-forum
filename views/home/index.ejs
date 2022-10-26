@@ -12,34 +12,6 @@
 </head>
 <body>
     <%- include('../templates/header/mainHeader.ejs')%>
-
-    <div id="popup-container">
-        <div class="thread-PopUp">
-            
-                <span class="close-popUp" onclick="closePopUp()">
-                <i class="uil uil-multiply"></i>
-            </span>
-
-            <p class="title-popUp">Criar Publicação</p>    
-
-            <section>
-                <div class="img-user-popUp">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
-                </div>
-                <p class="username-popup">Augusto Caetano</p>
-            </section>
-
-            <form class="thread-form">
-                <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
-                <label>Digite seu texto:</label>
-                <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
-                
-            </form>
-
-            <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
-        </div>
-    </div>
-
     <section class="publics-section">
         <main onclick="openPopUp()" class="publics-edit">
             <div class="img-user">
@@ -52,7 +24,7 @@
             <li class="thread-container">
                 <h2 class="title-post">Título do post</h2>
 
-                <div class="text-post">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrum dolorem praesentium aspernatur, sit, eos nam!</div>
+                <div class="text-post">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrumLorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrumLorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrumLorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrum dolorem praesentium aspernatur, sit, eos nam!</div>
 
                 <div class="stamp-thread">
 
