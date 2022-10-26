@@ -46,11 +46,11 @@ function openPopUp() {
             </section>
 
             <form class="thread-form">
-                <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
+                <input oninput="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
                 <label>Digite seu texto:</label>
-                <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
+                <textarea oninput="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
             </form>
-            <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+            <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
         </div>
       </div>`
   }).catch(err=>{
@@ -104,6 +104,24 @@ function validateSubmit() {
  return true
 }
 
-function submitThread() {
-  
+function submitThread(username) {
+  let id = createIdPost()
+  db.collection("posts").doc(id)
+  .set({
+      id,
+      title: form.titleThread().value,
+      description: form.textThread().value,
+      author: username,
+      time: new Date().toLocaleDateString()
+
+  }).then(() => {
+      closePopUp()
+      console.log("noite feliz");
+  }).catch(error => {
+      console.log("error")
+  })
+}
+
+function createIdPost(){
+  return Math.random().toString(16).substring(3, 16)
 }
