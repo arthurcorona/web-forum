@@ -1,8 +1,3 @@
-<!-- coisas para fazer: 
-    adicionar um campo de nome ao registrar    OK!
-
--->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,8 +31,9 @@
 
             <form class="thread-form">
                 <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
-                <input onchange="onChangeThreadSubmit()" type="text" id="text-thread" class="thread-text" placeholder="Texto">
-
+                <label>Digite seu texto:</label>
+                <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
+                
             </form>
 
             <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
@@ -52,7 +48,22 @@
             <button class="box-edit">Criar publicação</button>
         </main>
         <ul class="threads-container">
-            <li></li>
+
+            <li class="thread-container">
+                <h2 class="title-post">Título do post</h2>
+
+                <div class="text-post">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa aut repudiandae hic molestiae pariatur. Maxime nemo blanditiis quo nesciunt officia quos hic sapiente nostrum dolorem praesentium aspernatur, sit, eos nam!</div>
+
+                <div class="stamp-thread">
+
+                    <b class="author">Marcos Lorenzo</b>
+                    <b class="timestamp">25/10/2022</b> 
+                 <!-- ${new Date(post.date).toLocalString()} no js-->
+
+                </div>
+
+            </li>
+
             <li></li>
             <li></li>
         </ul>

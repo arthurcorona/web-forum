@@ -23,16 +23,16 @@ function signOut() {
     })
 }
 
+function goToAccount() {
+  window.location.href = "/account"
+}
+
 function openPopUp() {
   document.getElementById("popup-container").style.display = 'flex'
 }
 
 function closePopUp() {
   document.getElementById("popup-container").style.display = 'none'
-}
-
-function submitThread() {
-
 }
 
 function onChangeThreadSubmit() {
@@ -58,4 +58,6 @@ function validateSubmit() {
  return true
 }
 
-// deixar o botão de enviar desvalidado, para depois validar ele (dps q as funcoes estiverem prontas)
+function submitThread() {
+  
+}

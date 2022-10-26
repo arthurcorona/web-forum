@@ -28,6 +28,9 @@ app.get("/register", (req,res) => {
     res.render("register")
 })
 
+app.get("/account", (req, res) => {
+    res.render("account")
+})
 
 
 
