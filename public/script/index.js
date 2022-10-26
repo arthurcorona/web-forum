@@ -28,30 +28,35 @@ function goToAccount() {
 }
 
 function openPopUp() {
-  document.body.innerHTML += `<div id="popup-container">
-                                <div class="thread-PopUp">
-                                    
-                                        <span class="close-popUp" onclick="closePopUp()">
-                                        <i class="uil uil-multiply"></i>
-                                    </span>
+  appendUsername().then(username=>{
+    document.body.innerHTML += `<div id="popup-container">
+        <div class="thread-PopUp">
+            
+                <span class="close-popUp" onclick="closePopUp()">
+                <i class="uil uil-multiply"></i>
+            </span>
 
-                                    <p class="title-popUp">Criar Publicação</p>    
+            <p class="title-popUp">Criar Publicação</p>    
 
-                                    <section>
-                                        <div class="img-user-popUp">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
-                                        </div>
-                                        <p class="username-popup">Augusto Caetano</p>
-                                    </section>
+            <section>
+                <div class="img-user-popUp">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                </div>
+                <p class="username-popup">${username}</p>
+            </section>
 
-                                    <form class="thread-form">
-                                        <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
-                                        <label>Digite seu texto:</label>
-                                        <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
-                                    </form>
-                                    <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
-                                </div>
-                              </div>`
+            <form class="thread-form">
+                <input onchange="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
+                <label>Digite seu texto:</label>
+                <textarea onchange="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
+            </form>
+            <button onclick="submitThread()" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+        </div>
+      </div>`
+  }).catch(err=>{
+    console.log(err)
+  })
+  
 }
 
 function closePopUp() {
@@ -60,16 +65,20 @@ function closePopUp() {
 appendUsername()
 function appendUsername() {
   // verificando se o user está on
-  auth.onAuthStateChanged(userOn => {
-    if(userOn){
-      let userInDB = db.collection("users").doc(userOn.uid)
-      userInDB.get().then((doc) => { 
-          console.log(doc.data())
-      })
-    }else{
-      console.log("User não encontrado!")
-    }
+  return new Promise((res, rej)=>{
+    auth.onAuthStateChanged(userOn => {
+      if(userOn){
+        let userInDB = db.collection("users").doc(userOn.uid)
+        userInDB.get().then((doc) => { 
+          let userName = doc.data().user.username
+            res(userName)
+        })
+      }else{
+        rej("Deu tudo errado")
+      }
+    })
   })
+  
 
 }
 function onChangeThreadSubmit() {
@@ -97,17 +106,4 @@ function validateSubmit() {
 
 function submitThread() {
   
-}
-
-function appendUsername(user) {
-  
-  // verificando se o user está on
-  auth.onAuthStateChanged(userOn => {
-    userOn ? appendUsername(userOn.uid) : console.log("user não está on");
-  })
-
-  let userInDB = db.collection("users").doc(user)
-  userInDB.get().then((doc) = { 
-    
-  })
 }
