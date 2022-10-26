@@ -98,3 +98,16 @@ function validateSubmit() {
 function submitThread() {
   
 }
+
+function appendUsername(user) {
+  
+  // verificando se o user está on
+  auth.onAuthStateChanged(userOn => {
+    userOn ? appendUsername(userOn.uid) : console.log("user não está on");
+  })
+
+  let userInDB = db.collection("users").doc(user)
+  userInDB.get().then((doc) = { 
+    
+  })
+}
