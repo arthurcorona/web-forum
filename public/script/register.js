@@ -111,7 +111,7 @@ function createUserInDB(username, email) {
             if (user) {
                 db.collection("users").doc(user.uid)
                     .set({
-                        user_infos: {
+                        user: {
                             username: username,
                             email: email,
                             img_user: "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png",
