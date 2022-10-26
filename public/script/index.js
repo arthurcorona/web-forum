@@ -5,6 +5,27 @@ const form = {
 
 }
 
+document.addEventListener("DOMContentLoaded", ()=>{
+      db.collection("posts").get().then(snp=>{
+        snp.forEach(post=>{
+          createPost(post.data())
+
+        })
+      })
+})
+
+function createPost(post){
+    document.querySelector(".threads-container").innerHTML += `<li class="thread-container" id="${post.id}">
+                                                                  <h2 class="title-post">${post.title}</h2>
+                                                                  <div class="text-post">${post.description}</div>
+                                                                  <div class="stamp-thread">
+                                                                      <b class="author">${post.author}</b>
+                                                                      <b class="timestamp">${post.time}</b> 
+                                                                  </div>
+                                                              </li>`
+}
+
+
 function showMenuAccount() {
     let buttons = document.getElementById("options_account")
     
@@ -115,6 +136,7 @@ function submitThread(username) {
       time: new Date().toLocaleDateString()
 
   }).then(() => {
+      document.location.reload(true)
       closePopUp()
       console.log("noite feliz");
   }).catch(error => {
