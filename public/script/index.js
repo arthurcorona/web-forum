@@ -73,7 +73,7 @@ function appendUsername() {
           let userName = doc.data().user.username
             res(userName)
         })
-      }else{
+      }else{""
         rej("Deu tudo errado")
       }
     })
