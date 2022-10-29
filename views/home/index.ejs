@@ -11,7 +11,19 @@
     <%- include('../templates/styleGlobal.ejs')%>
 </head>
 <body>
+
     <%- include('../templates/header/mainHeader.ejs')%>
+
+
+    <div class="loading-container">
+      
+        <div class="loading-content">
+            <img class="loading-gif" src="https://gifimage.net/wp-content/uploads/2017/11/gif-sem-fundo-8.gif" width="100px" height="100px">
+            <!-- <p class="message-loading">Carregando...</p> -->
+        </div>
+
+    </div>
+
     <section class="publics-section">
         <main onclick="openPopUp()" class="publics-edit">
             <div class="img-user">
@@ -21,6 +33,7 @@
         </main>
         <ul class="threads-container"></ul>
     </section>
+
 </body>
 
     <%-include('../templates/accountScripts/srcScripts.ejs')%>

@@ -130,3 +130,7 @@ function createUserInDB(username, email) {
         })
     })
 }
+
+function loading() {
+    
+}

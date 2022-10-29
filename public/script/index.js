@@ -77,12 +77,33 @@ function openPopUp() {
   }).catch(err=>{
     console.log(err)
   })
+
+  loading() 
   
+}
+
+function openLoading() {
+  document.querySelector('.loading-container').style.display = 'inline'
+}
+
+function closeLoading() {
+  document.querySelector('.loading-container').style.display = 'none'
+}
+
+function loading() {
+  openLoading()  
+setTimeout( () => {
+  closeLoading()
+}, 600)
 }
 
 function closePopUp() {
   document.getElementById("popup-container").remove()
+
+loading()
+
 }
+
 appendUsername()
 function appendUsername() {
   // verificando se o user está on
@@ -138,8 +159,12 @@ function submitThread(username) {
   }).then(() => {
       document.location.reload(true)
       closePopUp()
+      setTimeout(() => {
+        loading() 
+      }, 1500)
+      closeLoading()
       console.log("noite feliz");
-  }).catch(error => {
+    }).catch(error => {
       console.log("error")
   })
 }
