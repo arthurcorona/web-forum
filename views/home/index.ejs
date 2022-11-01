@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +11,16 @@
     <title>Sinion</title>
     <%- include('../templates/styleGlobal.ejs')%>
 </head>
+
 <body>
 
     <%- include('../templates/header/mainHeader.ejs')%>
-
 
     <div class="loading-container">
       
         <div class="loading-content">
             <img class="loading-gif" src="https://gifimage.net/wp-content/uploads/2017/11/gif-sem-fundo-8.gif" width="100px" height="100px">
-            <!-- <p class="message-loading">Carregando...</p> -->
+            <p class="message-loading">Carregando...</p>
         </div>
 
     </div>
@@ -29,10 +30,45 @@
             <div class="img-user">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
             </div>
-            <button class="box-edit">Criar publicação</button>
+            <button id="" class="box-edit">Criar publicação</button>
         </main>
-        <ul class="threads-container"></ul>
+        <ul class="threads-container">
+
+        </ul>
     </section>
+    
+    <button id="myBtn">Try it</button>
+
+    <p id="demo"></p>
+
+    <div>
+        <p id="teste"></p>
+    </div>
+
+    <script>
+    // const element = document.getElementById("myBtn");
+    // element.addEventListener("click", function() {
+    // document.getElementById("demo").innerHTML = "Hello World";
+    // });
+    // </script>
+
+    <!--    
+    
+        <button id="myBtn">Try it</button>
+
+    <p id="demo"></p>
+
+    <script>
+    const element = document.getElementById("myBtn");
+    element.addEventListener("click", function() {
+    document.getElementById("demo").innerHTML = "Hello World";
+    });
+
+    </script> -->
+
+    </body>
+    </html>
+
 
 </body>
 

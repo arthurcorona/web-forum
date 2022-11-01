@@ -2,29 +2,41 @@ const form = {
   titleThread: () => document.getElementById('title-thread'),
   textThread: () => document.getElementById('text-thread'),
   submitThreadButton: () => document.getElementById('submit-thread'),
-
+  ThreadContainer: () => document.querySelector('.thread-container'),
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
       db.collection("posts").get().then(snp=>{
         snp.forEach(post=>{
           createPost(post.data())
-
         })
       })
+      loading()
 })
 
 function createPost(post){
-    document.querySelector(".threads-container").innerHTML += `<li class="thread-container" id="${post.id}">
-                                                                  <h2 class="title-post">${post.title}</h2>
-                                                                  <div class="text-post">${post.description}</div>
-                                                                  <div class="stamp-thread">
-                                                                      <b class="author">${post.author}</b>
-                                                                      <b class="timestamp">${post.time}</b> 
-                                                                  </div>
-                                                              </li>`
-}
+    document.querySelector(".threads-container").innerHTML += ` 
 
+                                                                  <div id="thread-container">
+                                                                      <li class="thread-container" id="${post.id}">
+                                                                        <h2 class="title-post">${post.title}</h2>
+                                                                        <div class="text-post">${post.description}</div>
+                                                                        <button onclick="addComment()" class="comment-button">Comentar</button>
+                                                                        <div class="stamp-thread">
+                                                                            <b class="author">${post.author}</b>
+                                                                            <b class="timestamp">${post.time}</b> 
+                                                                        </div>
+                                                                      </li>
+                                                                    
+                                                                  </div> 
+                                                                
+                                                              `
+}
+// criar a função openThread() e deixar ela no index home
+
+form.ThreadContainer().addEventListener("click", () => {
+  document.getElementById("teste").innerHTML = "Hello World";
+})
 
 function showMenuAccount() {
     let buttons = document.getElementById("options_account")
@@ -42,6 +54,7 @@ function signOut() {
     }).catch(() => {
         alert('erro ao fazer logout')
     })
+
 }
 
 function goToAccount() {
@@ -119,10 +132,9 @@ function appendUsername() {
         rej("Deu tudo errado")
       }
     })
-  })
-  
-
+  })  
 }
+
 function onChangeThreadSubmit() {
   toggleSubmitThreadButtonDisable()
 }
@@ -136,13 +148,13 @@ function validateSubmit() {
 
  if (!title || title.length < 6) {
   return false
- }
+}
 
  const text = form.textThread().value
 
  if (!text || text.length < 10) {
   return false
- }
+}
  return true
 }
 
@@ -159,15 +171,16 @@ function submitThread(username) {
   }).then(() => {
       document.location.reload(true)
       closePopUp()
-      setTimeout(() => {
-        loading() 
-      }, 1500)
-      closeLoading()
-      console.log("noite feliz");
+      loading()
     }).catch(error => {
       console.log("error")
   })
 }
+
+function addComment() {
+  
+}
+
 
 function createIdPost(){
   return Math.random().toString(16).substring(3, 16)

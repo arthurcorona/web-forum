@@ -11,8 +11,20 @@
     <%- include('../templates/styleGlobal.ejs')%>
 </head>
 <body>
-    
+
+<%- include('../templates/header/mainHeader.ejs')%>
+
+<h1>Olá User</h1>
+
+<div class="">
+
+</div>
+
 </body>
 
-<%-include('../templates/accountScripts/srcScripts.ejs')%>
 </html>
+
+    <%-include('../templates/accountScripts/srcScripts.ejs')%>
+
+    <script src="/public/script/auth-guard.js"></script>
+    <script src="/public/script/index.js"></script>

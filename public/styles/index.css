@@ -21,13 +21,18 @@
     padding: 4rem 3rem;
 }
 .publics-edit{
-    width: 70%;
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
 
 }
+
+.box-edit {
+    width: 100%;
+}
+
 .img-user{
     display: flex;
     align-items: center;
@@ -127,7 +132,7 @@
     background-color: gray;
     color: white;
     cursor: pointer;
-} 
+}
 
 .close-popUp {
     margin-left: 0;
@@ -137,20 +142,11 @@
     cursor: pointer;
 }
 
-#submit-thread {
-    
-}
-
-#submit-thread:disabled {
-    background-color: ;
-    color: ;
-}
-
-
 .threads-container{
     margin-top: 2rem;
     width: 100%;
 }
+
 .threads-container li{
     background-color: white;
     width: 100%;
@@ -158,6 +154,7 @@
     margin-bottom: 1rem;
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
+    cursor: pointer;
 }
 
 .thread-text {
@@ -166,6 +163,15 @@
 
 .thread-container {
     padding: 1rem;
+}
+
+.comment-container {
+margin-bottom: 0;
+
+}
+
+.text-comment {
+    background-color: aqua;
 }
 
 .title-post {
@@ -205,6 +211,14 @@
     text-decoration:overline;
 }
 
+.loading-gif {
+    margin-left: 5%;
+}
+
 .loading-gif::before {
     content: url(https://gifimage.net/wp-content/uploads/2017/11/gif-sem-fundo-8.gif)
+}
+
+.comment-button {
+    float: right;
 }
