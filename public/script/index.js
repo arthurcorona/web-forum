@@ -1,8 +1,11 @@
+//fazer funcção para adicionar o html no comments-container
+
 const form = {
   titleThread: () => document.getElementById('title-thread'),
   textThread: () => document.getElementById('text-thread'),
   submitThreadButton: () => document.getElementById('submit-thread'),
   ThreadContainer: () => document.querySelector('.thread-container'),
+  commentContainer: () => document.querySelector('.comments-container'),
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -21,22 +24,24 @@ function createPost(post){
                                                                       <li class="thread-container" id="${post.id}">
                                                                         <h2 class="title-post">${post.title}</h2>
                                                                         <div class="text-post">${post.description}</div>
-                                                                        <button onclick="addComment()" class="comment-button">Comentar</button>
                                                                         <div class="stamp-thread">
                                                                             <b class="author">${post.author}</b>
                                                                             <b class="timestamp">${post.time}</b> 
+                                                                            <hr>
+                                                                        </div>
+
+                                                                        <div class="comments-container" id="comments-container">
                                                                         </div>
                                                                       </li>
-                                                                    
                                                                   </div> 
                                                                 
                                                               `
 }
 // criar a função openThread() e deixar ela no index home
 
-form.ThreadContainer().addEventListener("click", () => {
-  document.getElementById("teste").innerHTML = "Hello World";
-})
+// form.ThreadContainer().addEventListener("click", () => {
+//   document.getElementById("teste").innerHTML = "Hello World";
+// })
 
 function showMenuAccount() {
     let buttons = document.getElementById("options_account")
@@ -93,6 +98,34 @@ function openPopUp() {
 
   loading() 
   
+}
+
+function openPopUpComment() {
+  
+  document.form.commentContainer().innerHTML += `
+
+                                                <h3>Comentários:</h3>
+                                                <div class="text-comment">conteúdo do comentário</div>
+                                                <div class="stamp-thread">
+                                                  <b class="author">${post.author}</b>
+                                                  <b class="timestamp">${post.time}</b> 
+                                                  <hr>
+                                                  <button onclick=openPopUpComment()>Adicionar comentário</button>
+                                                </div>
+
+                                                `
+
+
+
+// documento em html para adicionar
+  // <h3>Comentários:</h3>
+  // <div class="text-comment">conteúdo do comentário</div>
+  // <div class="stamp-thread">
+  //   <b class="author">${post.author}</b>
+  //   <b class="timestamp">${post.time}</b> 
+  //   <hr>
+  // </div>
+
 }
 
 function openLoading() {
