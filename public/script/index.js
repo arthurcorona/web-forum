@@ -5,7 +5,12 @@ const form = {
   textThread: () => document.getElementById('text-thread'),
   submitThreadButton: () => document.getElementById('submit-thread'),
   ThreadContainer: () => document.querySelector('.thread-container'),
-  commentContainer: () => document.querySelector('.comments-container'),
+  commentsContainer: () => document.querySelector('.comments-container'),
+  buttonOpenComments: () => document.querySelector('.open-comments'),
+  buttonCloseComments: () => document.querySelector('.close-comments'),
+  buttonOpenCommentsAgain: () => document.querySelector('.open-comments-again'),
+
+
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -30,18 +35,18 @@ function createPost(post){
                                                                             <hr>
                                                                         </div>
 
+                                                                        <button class="open-comments" onclick="openComments()">Abrir Comentários</button>
+                                                                        <button class="close-comments" onclick="closeComments()">Fechar Comentários</button>
+                                                                        <button class="open-comments-again" onclick="closeCommentsAgain()">Abrir Comentários</button>
+
                                                                         <div class="comments-container" id="comments-container">
                                                                         </div>
                                                                       </li>
                                                                   </div> 
                                                                 
                                                               `
-}
-// criar a função openThread() e deixar ela no index home
 
-// form.ThreadContainer().addEventListener("click", () => {
-//   document.getElementById("teste").innerHTML = "Hello World";
-// })
+}
 
 function showMenuAccount() {
     let buttons = document.getElementById("options_account")
@@ -100,21 +105,33 @@ function openPopUp() {
   
 }
 
+// criar a função openThread() e deixar ela no index home
+
+// form.ThreadContainer().addEventListener("click", () => {
+//   document.getElementById("teste").innerHTML = "Hello World";
+// })
+
 function openPopUpComment() {
-  
-  document.form.commentContainer().innerHTML += `
+
+}
+
+function openComments() {
+
+  form.commentsContainer().innerHTML += `
 
                                                 <h3>Comentários:</h3>
                                                 <div class="text-comment">conteúdo do comentário</div>
                                                 <div class="stamp-thread">
-                                                  <b class="author">${post.author}</b>
-                                                  <b class="timestamp">${post.time}</b> 
+                                                  <b class="author">Nick do autor</b>
+                                                  <b class="timestamp">05/11/22</b> 
                                                   <hr>
-                                                  <button onclick=openPopUpComment()>Adicionar comentário</button>
+                                                  <button id="open" onclick="openPopUpComment()"> Adicionar comentário </button>
                                                 </div>
 
                                                 `
 
+  form.buttonOpenComments().style.display = 'none'
+  form.buttonCloseComments().style.display = 'Flex'
 
 
 // documento em html para adicionar
@@ -126,6 +143,18 @@ function openPopUpComment() {
   //   <hr>
   // </div>
 
+}
+
+function closeComments() {
+  form.buttonCloseComments().style.display = 'none'
+
+  form.commentsContainer().style.display = 'none'
+  form.buttonOpenCommentsAgain().style.display = 'flex'
+  
+}
+
+function closeCommentsAgain() {
+  form.commentsContainer().style.display = 'block'
 }
 
 function openLoading() {

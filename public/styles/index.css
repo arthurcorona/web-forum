@@ -183,6 +183,21 @@
     padding: 1rem;
 }
 
+.open-comments {
+    padding: .3rem;
+    float: right;
+}
+
+.open-comments-again {
+    display: none;
+}
+
+.close-comments {
+    
+    
+    display: none;
+}
+
 .comment-container {
 margin-bottom: 0;
 
