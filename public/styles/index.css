@@ -181,11 +181,6 @@
     justify-content: center;
 }
 
-
-.submit-comment {
-    
-}
-
 .thread-text {
     height: 6rem;
 }
@@ -199,39 +194,10 @@
     padding: 1rem;
 }
 
-.open-comments {
-    padding: .3rem;
-    float: right;
-}
-
-.open-comments-again {
-    padding: .3rem;
-    float: right;
-    display: none;
-}
-
-.close-comments {
-    padding: .3rem;
-    float: right;
-    display: none;
-}
-
-.comment-container {
-margin-bottom: 0;
-
-}
-
 .title-post {
     margin-bottom: 1rem;
 }
 
-.text-post {
-
-}
-
-.text-comment {
-    background-color: rgb(156, 163, 163);
-}
 
 .author {
     margin-right: 1rem;
