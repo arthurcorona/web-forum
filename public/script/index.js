@@ -108,17 +108,24 @@ function openPopUp() {
   
 }
 
-function openComments() {
+function loop(content){
+  let acc = ""
+  for(let i = 0; i < 100 ; i++){
+      acc += content
+  }
+  return acc
+}
+function openComments(id) {
 
   form.commentsContainer().innerHTML += `
 
                                                 <h3>Comentários:</h3>
-                                                <div class="content-comment">conteúdo do comentário</div>
+                                                <p class="content-comment">${loop("TESTETESTE")}</p>
                                                 <div class="stamp-thread">
                                                   <b class="author">Nick do autor</b>
                                                   <b class="timestamp">05/11/22</b> 
                                                   <hr>
-                                                  <button id="open" onclick="openPopUpComment()"> Adicionar comentário </button>
+                                                  <button id="open" onclick="openPopUpComment('${id}')"> Adicionar comentário </button>
                                                 </div>
                                                 `
 
@@ -127,7 +134,7 @@ function openComments() {
 
 }
 
-function openPopUpComment() {
+function openPopUpComment(id) {
   appendUsername().then(username=>{
     document.body.innerHTML += `
       <div class="popup-comment">
@@ -148,7 +155,7 @@ function openPopUpComment() {
                   <label>Digite seu comentário:</label>
                   <textarea id="text-comment" class="comment-text"></textarea> 
               </form>
-              <button onclick="submitComment('${username}')" id="submit-comment" class="submit-thread" type="submit">Enviar</button>
+              <button onclick="submitComment('${username, id}')" id="submit-comment" class="submit-thread" type="submit">Enviar</button>
           </div>
       </div> 
       ` 
@@ -262,9 +269,9 @@ function submitThread(username) {
   })
 }
 
-function submitComment(username) {
-  let id = createIDComment()
-  db.collection("comments").doc(id)
+function submitComment(username, id) {
+  // let id = createIDComment()
+  db.collection("posts").doc(id)
     .set({
       id,
       description: form.textComment().value,
