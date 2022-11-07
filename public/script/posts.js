@@ -1,5 +1,5 @@
 module.exports = {
-     posts: [
+    posts: [
         {
             id: "aidi",
             title: "Titulo",
@@ -19,10 +19,9 @@ module.exports = {
     deletePost(id) {
         
     }
-    
 }
 
 function generateID() {
     return Math.random().toString(36).substr(2,9)
-}
+} 
 

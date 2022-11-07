@@ -9,6 +9,8 @@ const form = {
   buttonOpenComments: () => document.querySelector('.open-comments'),
   buttonCloseComments: () => document.querySelector('.close-comments'),
   buttonOpenCommentsAgain: () => document.querySelector('.open-comments-again'),
+  textComment: () => document.querySelector('.content-comment'),
+
 
 
 }
@@ -73,46 +75,37 @@ function goToAccount() {
 
 function openPopUp() {
   appendUsername().then(username=>{
-    document.body.innerHTML += `<div id="popup-container">
+    document.body.innerHTML += `
+      <div id="popup-container">
         <div class="thread-PopUp">
             
-                <span class="close-popUp" onclick="closePopUp()">
-                <i class="uil uil-multiply"></i>
-            </span>
+          <span class="close-popUp" onclick="closePopUp()">
+          <i class="uil uil-multiply"></i>
+          </span>
 
-            <p class="title-popUp">Criar Publicação</p>    
+          <p class="title-popUp">Criar Publicação</p>    
 
-            <section>
-                <div class="img-user-popUp">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
-                </div>
-                <p class="username-popup">${username}</p>
-            </section>
+          <section>
+              <div class="img-user-popUp">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+              </div>
+              <p class="username-popup">${username}</p>
+          </section>
 
-            <form class="thread-form">
-                <input oninput="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
-                <label>Digite seu texto:</label>
-                <textarea oninput="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
-            </form>
-            <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+          <form class="thread-form">
+            <input oninput="onChangeThreadSubmit()" type="text" id="title-thread" class="thread-title" placeholder="Titulo" >
+            <label>Digite seu texto:</label>
+            <textarea oninput="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
+          </form>
+          <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
         </div>
       </div>`
-  }).catch(err=>{
-    console.log(err)
+  }).catch(error => {
+    console.log(error)
   })
 
   loading() 
   
-}
-
-// criar a função openThread() e deixar ela no index home
-
-// form.ThreadContainer().addEventListener("click", () => {
-//   document.getElementById("teste").innerHTML = "Hello World";
-// })
-
-function openPopUpComment() {
-
 }
 
 function openComments() {
@@ -120,28 +113,50 @@ function openComments() {
   form.commentsContainer().innerHTML += `
 
                                                 <h3>Comentários:</h3>
-                                                <div class="text-comment">conteúdo do comentário</div>
+                                                <div class="content-comment">conteúdo do comentário</div>
                                                 <div class="stamp-thread">
                                                   <b class="author">Nick do autor</b>
                                                   <b class="timestamp">05/11/22</b> 
                                                   <hr>
                                                   <button id="open" onclick="openPopUpComment()"> Adicionar comentário </button>
                                                 </div>
-
                                                 `
 
   form.buttonOpenComments().style.display = 'none'
-  form.buttonCloseComments().style.display = 'Flex'
+  form.buttonCloseComments().style.display = 'flex'
 
+}
 
-// documento em html para adicionar
-  // <h3>Comentários:</h3>
-  // <div class="text-comment">conteúdo do comentário</div>
-  // <div class="stamp-thread">
-  //   <b class="author">${post.author}</b>
-  //   <b class="timestamp">${post.time}</b> 
-  //   <hr>
-  // </div>
+function openPopUpComment() {
+  appendUsername().then(username=>{
+    document.body.innerHTML += `
+      <div class="popup-comment">
+          <div class="thread-PopUp">    
+              <span class="close-popUp" onclick="closePopUpComment()">
+              <i class="uil uil-multiply"></i>
+              </span>
+              <p class="title-popUp">Comentar</p>    
+              
+              <section>
+                  <div class="img-user-popUp">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                  </div>
+                  <p class="username-popup">Nick do comentador</p>
+              </section>
+
+              <form class="thread-form">
+                  <label>Digite seu comentário:</label>
+                  <textarea id="text-comment" class="comment-text"></textarea> 
+              </form>
+              <button onclick="submitComment('${username}')" id="submit-comment" class="submit-thread" type="submit">Enviar</button>
+          </div>
+      </div> 
+      ` 
+  }).catch(error => {
+    console.log("error");
+  })
+
+  loading()
 
 }
 
@@ -155,6 +170,9 @@ function closeComments() {
 
 function closeCommentsAgain() {
   form.commentsContainer().style.display = 'block'
+  form.buttonCloseComments().style.display = 'flex'
+
+  form.buttonOpenCommentsAgain().style.display = 'none'
 }
 
 function openLoading() {
@@ -169,14 +187,19 @@ function loading() {
   openLoading()  
 setTimeout( () => {
   closeLoading()
-}, 600)
+}, 700)
 }
 
 function closePopUp() {
   document.getElementById("popup-container").remove()
 
 loading()
+}
 
+function closePopUpComment() {
+  document.querySelector('.popup-comment').remove()
+
+  loading()
 }
 
 appendUsername()
@@ -228,9 +251,9 @@ function submitThread(username) {
       title: form.titleThread().value,
       description: form.textThread().value,
       author: username,
+      comments: [],
       time: new Date().toLocaleDateString()
-
-  }).then(() => {
+    }).then(() => {
       document.location.reload(true)
       closePopUp()
       loading()
@@ -239,11 +262,28 @@ function submitThread(username) {
   })
 }
 
-function addComment() {
-  
+function submitComment(username) {
+  let id = createIDComment()
+  db.collection("comments").doc(id)
+    .set({
+      id,
+      description: form.textComment().value,
+      author: username,
+      time: new Date().toLocaleDateString()
+    }).then(() => {
+      document.location.reload(true)
+      closePopUpComment()
+      loading()
+    }).catch(error => {
+      console.log("erro ao enviar o comentário");
+    })
 }
 
 
 function createIdPost(){
   return Math.random().toString(16).substring(3, 16)
 }
+
+function createIDComment() {
+  return Math.random().toString(16).substring(3, 16)
+} 
