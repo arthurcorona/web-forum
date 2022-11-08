@@ -16,14 +16,9 @@
 
     <%- include('../templates/header/mainHeader.ejs')%>
 
-    <div class="loading-container">
-      
-        <div class="loading-content">
-            <img class="loading-gif" src="https://gifimage.net/wp-content/uploads/2017/11/gif-sem-fundo-8.gif" width="100px" height="100px">
-            <p class="message-loading">Carregando...</p>
-        </div>
-
-    </div>
+    <!-- <div class="loading-container">
+        <img class="loading-gif" src="https://cdn.dribbble.com/users/148670/screenshots/5252136/dots.gif">
+    </div> -->
 
     <section class="publics-section">
         <div onclick="openPopUp()" class="publics-edit">
@@ -36,20 +31,12 @@
         <ul class="threads-container">
 
         </ul>
-
-
-
     </section>
+    <%- include('../templates/accountScripts/srcScripts.ejs')%>
 
-    </body>
-    </html>
+    <script src="/public/script/auth-guard.js"></script>
+    <script src="/public/script/tela_posts/index.js"></script>
 
 
 </body>
-
-    <%-include('../templates/accountScripts/srcScripts.ejs')%>
-
-    <script src="/public/script/auth-guard.js"></script>
-    <script src="/public/script/index.js"></script>
-
 </html>
