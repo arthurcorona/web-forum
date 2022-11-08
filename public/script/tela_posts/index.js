@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
       })
 })
+function createComments(comments){
+  let comments_html = ""
+  comments.forEach(comment=>{
+    comments_html += `
+      <p>${comment.description} - ${comment.author}</p>
+    `
+  })
+  return comments_html
+}
 function createPost(post){
     document.querySelector(".threads-container").innerHTML += ` 
 
@@ -34,7 +43,11 @@ function createPost(post){
                                                                             <button onclick="openPopUpComment('${post.id}')" >Criar comentário</button>
                                                                             <button>Ver comentários</button>
                                                                         </div>
+                                                                        <div class="comments-container">
+                                                                          ${createComments(post.comments)}
                                                                         
+                                                                        
+                                                                        </div>
                                                                         
                                                                       </li>
                                                             
