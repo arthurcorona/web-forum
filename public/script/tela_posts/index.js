@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
           createPost(post.data())
           // document.querySelector(".loading-container").style.display = "none"
         })
+      }).catch(err=>{
+        console.log(err)
       })
 })
 function createComments(comments){
@@ -44,7 +46,7 @@ function createPost(post){
                                                                             <button>Ver comentários</button>
                                                                         </div>
                                                                         <div class="comments-container">
-                                                                          ${createComments(post.comments)}
+                                                                        ${createComments(post.comments)}
                                                                         
                                                                         
                                                                         </div>
@@ -65,13 +67,13 @@ function readMoreThread(button){
 }
 function listenClassRead(description){
   let lengthDescription = description.length
-  if(lengthDescription > 100) return "putText_Post"
+  if(lengthDescription > 700) return "putText_Post"
   else return ""
   
 }
 function listenLengthText(description){
     let lengthDescription = description.length
-    if(lengthDescription > 100) return "<span><button onclick='readMoreThread(this)'>Ler mais</button></span>"
+    if(lengthDescription > 700) return "<span><button onclick='readMoreThread(this)'>Ler mais</button></span>"
     else return ""
     
 
@@ -123,7 +125,7 @@ function openPopUp(postId) {
             <label>Digite seu texto:</label>
             <textarea oninput="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
           </form>
-          <button onclick="submitThread('${postId}, ${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+          <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
         </div>
       </div>`
   }).catch(error => {
@@ -176,7 +178,7 @@ function validateSubmit() {
  return true
 }
 
-function submitThread(idPost, username){
+function submitThread(username){
   auth.onAuthStateChanged(user => createThreadDb(username, user.uid))
   const createThreadDb = (username, uid)=>{
     let id = createIdPost()
