@@ -6,7 +6,6 @@ const form = {
   submitThreadButton: () => document.querySelector('#submit-thread'),
   ThreadContainer: () => document.querySelector('.thread-container'),
   textComment: ()=> document.querySelector("#text-comment")
-
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -35,7 +34,7 @@ function createPost(post){
                                                                       <li class="thread" id="${post.id}">
                                                                         <h2 class="title-post">${post.title}</h2>
                                                                         <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
-                                                                       ${listenLengthText(post.description)}
+                                                                        ${listenLengthText(post.description)}
                                                                         <div class="stamp-thread">
                                                                             <b class="author">${post.author}</b>
                                                                             <b class="timestamp">${post.time}</b> 
@@ -43,7 +42,7 @@ function createPost(post){
                                                                         </div>
                                                                         <div class="buttons_comments">
                                                                             <button onclick="openPopUpComment('${post.id}')" >Criar comentário</button>
-                                                                            <button>Ver comentários</button>
+                                                                            <button onclick="toggleButtonComments(this)">Ver comentários</button>
                                                                         </div>
                                                                         <div class="comments-container">
                                                                         ${createComments(post.comments)}
@@ -55,22 +54,35 @@ function createPost(post){
                                                             
                                                                 
                                                               `
-
+                                              
 }
 
+function toggleButtonComments(element) {
 
+  let commentsContainer = element.parentNode.parentNode.querySelector(".comments-container")
+  commentsContainer.classList.toggle('comments-container-visible')
+
+  if(commentsContainer.classList.contains('comments-container-visible')) {
+    element.innerHTML = `Ocultar comentários`
+  }
+  else {
+    element.innerHTML = `Ver comentários`
+  }
+}
 
 function readMoreThread(button){
     let textThread = button.parentNode.parentNode.querySelector(".text-post")
     textThread.classList.toggle("putText_Post")
     button.innerHTML === "Ler mais" ? button.innerHTML = "Ler menos" : button.innerHTML = "Ler mais"
 }
+
 function listenClassRead(description){
   let lengthDescription = description.length
   if(lengthDescription > 700) return "putText_Post"
   else return ""
   
 }
+
 function listenLengthText(description){
     let lengthDescription = description.length
     if(lengthDescription > 700) return "<span><button onclick='readMoreThread(this)'>Ler mais</button></span>"
@@ -249,9 +261,11 @@ function submitComment(idPost, username){
       comments: firebase.firestore.FieldValue.arrayUnion(comment)
 
       },{merge: true}).then(()=>{
-          console.log("funfou")
+          location.reload()
+        // loading()
       }).catch(err =>{
           console.log(err)
       })
     
+
 }

@@ -136,10 +136,10 @@
 .thread{
     background-color: white;
     width: 100%;
+    overflow: hidden;
     margin-bottom: 1rem;
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
-
     padding: 1rem;
 }
 .text-post{
@@ -195,3 +195,14 @@
     width: 300px;
 }
 
+/* comments */
+
+.comments-container {
+    margin-top: 2rem;
+    display: none;
+
+}
+
+.comments-container-visible {
+    display: inline-block;
+}

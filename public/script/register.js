@@ -83,13 +83,19 @@ function isFormValid() {
 function register() {
     const email = form.email().value
     const password = form.password().value
-    const username = form.username().value
+    const username = form.username().value 
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(user=>{
         auth.onAuthStateChanged(user =>{
             if(user){
                 db.collection("users").doc(user.uid).set({
-                    user:{username,email}
+                    user:
+                    {
+                        username,
+                        email,
+                        img_user: "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png",
+                        since_data: new Date().toLocaleDateString()
+                    }
                 }).then(()=>{
                     console.log("funfou")
                     window.location.href = "/"
@@ -102,32 +108,6 @@ function register() {
         })
     }).catch((err)=>{
         console.log(err)
-    })
-}
-
-function createUserInDB(username, email) {
-    let promise_creatDBUser = new Promise((resolve, reject) => {
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                db.collection("users").doc(user.uid)
-                    .set({
-                        user: {
-                            username: username,
-                            email: email,
-                            img_user: "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png"
-                        }
-                    }).then(() => {
-                        resolve()
-                        console.log("noite feliz");
-                    }).catch(error => {
-                        reject(err)
-                        console.log("error")
-                    })
-            }
-            else {
-                   console.log("error"); 
-            }
-        })
     })
 }
 
