@@ -13,48 +13,43 @@ document.addEventListener("DOMContentLoaded", ()=>{
         snp.forEach(post=>{
           createPost(post.data())
           // document.querySelector(".loading-container").style.display = "none"
-        })
-      }).catch(err=>{
-        console.log(err)
+          })
+      }).catch(error => {
+        console.log(error)
       })
 })
+
+function createPost(post){
+    document.querySelector(".threads-container")
+      .innerHTML += ` 
+        <li class="thread" id="${post.id}">
+          <h2 class="title-post">${post.title}</h2>
+          <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
+          ${listenLengthText(post.description)}
+          <div class="stamp-thread">
+            <p class="timestamp">${post.author} - ${post.time}</p>
+          </div>
+          <div class="buttons_comments">
+            <button onclick="openPopUpComment('${post.id}')" >Criar comentário</button>
+            <button onclick="toggleButtonComments(this)">Ver comentários</button>
+          </div>
+          <div class="comments-container">
+            ${createComments(post.comments)}
+          </div>
+      </li>                                                    
+ `
+                                              
+}
+
 function createComments(comments){
   let comments_html = ""
   comments.forEach(comment=>{
     comments_html += `
-      <p>${comment.description} - ${comment.author}</p>
-    `
+      <p>${comment.description}</p>
+      <p class="stamp-comment">${comment.author} - ${comment.time}</p>
+      `
   })
   return comments_html
-}
-function createPost(post){
-    document.querySelector(".threads-container").innerHTML += ` 
-
-                                  
-                                                                      <li class="thread" id="${post.id}">
-                                                                        <h2 class="title-post">${post.title}</h2>
-                                                                        <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
-                                                                        ${listenLengthText(post.description)}
-                                                                        <div class="stamp-thread">
-                                                                            <b class="author">${post.author}</b>
-                                                                            <b class="timestamp">${post.time}</b> 
-                                                                            <hr>
-                                                                        </div>
-                                                                        <div class="buttons_comments">
-                                                                            <button onclick="openPopUpComment('${post.id}')" >Criar comentário</button>
-                                                                            <button onclick="toggleButtonComments(this)">Ver comentários</button>
-                                                                        </div>
-                                                                        <div class="comments-container">
-                                                                        ${createComments(post.comments)}
-                                                                        
-                                                                        
-                                                                        </div>
-                                                                        
-                                                                      </li>
-                                                            
-                                                                
-                                                              `
-                                              
 }
 
 function toggleButtonComments(element) {
@@ -90,6 +85,7 @@ function listenLengthText(description){
     
 
 } 
+
 function showMenuAccount() {
     let buttons = document.getElementById("options_account")
     
@@ -121,7 +117,7 @@ function openPopUp(postId) {
             
           <span class="close-popUp" onclick="closePopUp()">
           <i class="uil uil-multiply"></i>
-          </span>'
+          </span>
 
           <p class="title-popUp">Criar Publicação</p>    
 
@@ -152,16 +148,16 @@ function closePopUp() {
 
 function appendUsername() {
   // verificando se o user está on
-  return new Promise((res, rej)=>{
+  return new Promise((response, reject)=>{
     auth.onAuthStateChanged(userOn => {
       if(userOn){
         let userInDB = db.collection("users").doc(userOn.uid)
         userInDB.get().then((doc) => { 
-          let userName = doc.data().user.username
-            res(userName)
+          let username = doc.data().user.username
+            response(username)
         })
       }else{""
-        rej("Deu tudo errado")
+        reject("Deu tudo errado")
       }
     })
   })  
@@ -249,23 +245,23 @@ function openPopUpComment(idPost){
   })
 }
 
+// resolver: a data está indo para o firebase mas não está retornando no fórum
+
 function submitComment(idPost, username){
   let comment = {
     description: form.textComment().value,
     author: username,
     time: new Date().toLocaleDateString()
-
   }
 
     db.collection("posts").doc(idPost).update({
       comments: firebase.firestore.FieldValue.arrayUnion(comment)
-
-      },{merge: true}).then(()=>{
+      },
+      {merge: true})
+        .then(()=>{
           location.reload()
-        // loading()
-      }).catch(err =>{
-          console.log(err)
+          // loading()
+        }).catch(error =>{
+          console.log(error)
       })
-    
-
 }

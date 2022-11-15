@@ -1,0 +1,18 @@
+.user-information {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+}
+
+.user-information img {
+    border-radius: 60%;
+}
+
+.image-profile {
+    width: 15rem;
+}
+
+.users-info {
+    padding: 2rem;
+}

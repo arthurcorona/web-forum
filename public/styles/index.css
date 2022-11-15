@@ -206,3 +206,14 @@
 .comments-container-visible {
     display: inline-block;
 }
+
+.stamp-comment {
+    margin-top: .5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.stamp-thread {
+    margin-top: .3rem;
+    font-weight: bold;
+}
