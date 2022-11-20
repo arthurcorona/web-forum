@@ -1,5 +1,3 @@
-//fazer funcção para adicionar o html no comments-container
-
 const form = {
   titleThread: () => document.querySelector('#title-thread'),
   textThread: () => document.querySelector('#text-thread'),
@@ -12,7 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       db.collection("posts").get().then(snp=>{
         snp.forEach(post=>{
           createPost(post.data())
-          // document.querySelector(".loading-container").style.display = "none"
+          showLoading()
           })
       }).catch(error => {
         console.log(error)
@@ -205,6 +203,7 @@ function submitThread(username){
         console.log("error")
     })
   }
+  showLoading()
 }
 
 
@@ -245,8 +244,6 @@ function openPopUpComment(idPost){
   })
 }
 
-// resolver: a data está indo para o firebase mas não está retornando no fórum
-
 function submitComment(idPost, username){
   let comment = {
     description: form.textComment().value,
@@ -264,4 +261,25 @@ function submitComment(idPost, username){
         }).catch(error =>{
           console.log(error)
       })
+      showLoading()
+}
+
+function showLoading() {
+  const loadingContainer = document.createElement('div')
+  const gifLoading = document.createElement('img')
+
+  loadingContainer.classList.add('loading-container')
+
+  loadingContainer.appendChild(gifLoading)
+
+  gifLoading.src = "https://media.tenor.com/JXy40v9mQwIAAAAj/monkey-skype.gif"
+  gifLoading.classList.add('loading-image')
+
+  document.body.append(loadingContainer)
+
+  setTimeout(() => hideLoading(), 800)
+}
+
+function hideLoading() {
+  document.querySelector('.loading-container').remove()
 }

@@ -1,7 +1,5 @@
-
 const express = require('express')
 const bodyParser = require('body-parser')
-// const posts = require('/public/script/posts.js')
 const path = require('path')
 const apiRoute = require('./routes/api')
 

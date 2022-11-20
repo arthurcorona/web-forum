@@ -142,14 +142,17 @@
     box-shadow: 3px 3px 10px black;
     padding: 1rem;
 }
+
 .text-post{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 .putText_Post{
     height: 100px;
     overflow-y: hidden;
 }
+
 .thread span{
     width: 100%;
     margin-top: .6rem;
@@ -157,6 +160,7 @@
     display: flex;
     justify-content: center;
 }
+
 .thread span button, .buttons_comments button{
     all: unset;
     font-size: 1rem;
@@ -166,33 +170,35 @@
     color: white;
     cursor: pointer;
 }
+
 .buttons_comments{
     margin-top: 1rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
+
 .buttons_comments button{
     background-color: rgb(109, 5, 5);
 }
 
-
-
-
-
+/* loading */
 
 .loading-container{
-    background-color: white;
     position: fixed;
     top: 0;
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.445);
+    backdrop-filter: blur(1px);
     z-index: 99;
     display: flex;
-    justify-content: center;
     align-items: center;
-}.loading-container img{
-    width: 300px;
+    justify-content: center;
+}
+
+.loading-image{
+    width: 20rem;
 }
 
 /* comments */
