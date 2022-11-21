@@ -93,8 +93,8 @@ function register() {
                     {
                         username,
                         email,
-                        img_user: "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png",
-                        since_data: new Date().toLocaleDateString()
+                        img_user: "public/images/default-user-img.png",
+                        since_date: new Date().toLocaleDateString()
                     }
                 }).then(()=>{
                     console.log("funfou")

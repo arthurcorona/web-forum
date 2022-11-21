@@ -16,3 +16,24 @@
 .users-info {
     padding: 2rem;
 }
+
+/* loading */
+
+.loading-container{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.445);
+    backdrop-filter: blur(1px);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-image{
+    width: 20rem;
+}
+
+/*  */

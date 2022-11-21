@@ -6,7 +6,7 @@ const form = {
   textComment: ()=> document.querySelector("#text-comment")
 }
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
       db.collection("posts").get().then(snp=>{
         snp.forEach(post=>{
           createPost(post.data())
@@ -17,95 +17,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       })
 })
 
-function createPost(post){
-    document.querySelector(".threads-container")
-      .innerHTML += ` 
-        <li class="thread" id="${post.id}">
-          <h2 class="title-post">${post.title}</h2>
-          <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
-          ${listenLengthText(post.description)}
-          <div class="stamp-thread">
-            <p class="timestamp">${post.author} - ${post.time}</p>
-          </div>
-          <div class="buttons_comments">
-            <button onclick="openPopUpComment('${post.id}')" >Criar comentário</button>
-            <button onclick="toggleButtonComments(this)">Ver comentários</button>
-          </div>
-          <div class="comments-container">
-            ${createComments(post.comments)}
-          </div>
-      </li>                                                    
- `
-                                              
-}
-
-function createComments(comments){
-  let comments_html = ""
-  comments.forEach(comment=>{
-    comments_html += `
-      <p>${comment.description}</p>
-      <p class="stamp-comment">${comment.author} - ${comment.time}</p>
-      `
-  })
-  return comments_html
-}
-
-function toggleButtonComments(element) {
-
-  let commentsContainer = element.parentNode.parentNode.querySelector(".comments-container")
-  commentsContainer.classList.toggle('comments-container-visible')
-
-  if(commentsContainer.classList.contains('comments-container-visible')) {
-    element.innerHTML = `Ocultar comentários`
-  }
-  else {
-    element.innerHTML = `Ver comentários`
-  }
-}
-
-function readMoreThread(button){
-    let textThread = button.parentNode.parentNode.querySelector(".text-post")
-    textThread.classList.toggle("putText_Post")
-    button.innerHTML === "Ler mais" ? button.innerHTML = "Ler menos" : button.innerHTML = "Ler mais"
-}
-
-function listenClassRead(description){
-  let lengthDescription = description.length
-  if(lengthDescription > 700) return "putText_Post"
-  else return ""
-  
-}
-
-function listenLengthText(description){
-    let lengthDescription = description.length
-    if(lengthDescription > 700) return "<span><button onclick='readMoreThread(this)'>Ler mais</button></span>"
-    else return ""
-    
-
-} 
-
-function showMenuAccount() {
-    let buttons = document.getElementById("options_account")
-    
-    if (buttons.style.display === "block") {
-      buttons.style.display = "none";
-    } else {
-      buttons.style.display = "block";
-    }
-}
- 
-function signOut() {
-    firebase.auth().signOut().then(() => {
-        window.location.href = "/login"
-    }).catch(() => {
-        alert('erro ao fazer logout')
-    })
-
-}
-
-function goToAccount() {
-  window.location.href = "/account"
-}
+// thread/post
 
 function openPopUp(postId) {
   appendUsername().then(username=>{
@@ -137,28 +49,54 @@ function openPopUp(postId) {
   }).catch(error => {
     console.log(error)
   })
-
 }
 
 function closePopUp() {
   document.getElementById("popup-container").remove()
 }
 
-function appendUsername() {
-  // verificando se o user está on
-  return new Promise((response, reject)=>{
-    auth.onAuthStateChanged(userOn => {
-      if(userOn){
-        let userInDB = db.collection("users").doc(userOn.uid)
-        userInDB.get().then((doc) => { 
-          let username = doc.data().user.username
-            response(username)
-        })
-      }else{""
-        reject("Deu tudo errado")
-      }
+function createPost(post){
+    document.querySelector(".threads-container")
+      .innerHTML += ` 
+        <li class="thread" id="${post.id}">
+          <h2 class="title-post">${post.title}</h2>
+          <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
+          ${listenLengthText(post.description)}
+          <div class="stamp-thread">
+            <p class="timestamp">${post.author} - ${post.time}</p>
+          </div>
+          <div class="buttons_comments">
+            <button onclick="openPopUpComment('${post.id}')">Criar comentário</button>
+            <button onclick="toggleButtonComments(this)">Ver comentários</button>
+          </div>
+          <div class="comments-container">
+            ${createComments(post.comments)}
+          </div>
+      </li>                                                    
+ `                                           
+}
+
+
+function submitThread(username){
+  auth.onAuthStateChanged(user => createThreadDb(username, user.uid))
+  const createThreadDb = (username, uid)=>{
+    let id = createIdPost()
+    db.collection("posts").doc(id)
+    .set({
+        id,
+        title: form.titleThread().value,
+        description: form.textThread().value,
+        author: username,
+        comments: [],
+        uid,
+        time: new Date().toLocaleDateString()
+      }).then(() => {
+        document.location.reload(true)
+      }).catch(error => {
+        console.log("error")
     })
-  })  
+  }
+  showLoading()
 }
 
 function onChangeThreadSubmit() {
@@ -184,31 +122,39 @@ function validateSubmit() {
  return true
 }
 
-function submitThread(username){
-  auth.onAuthStateChanged(user => createThreadDb(username, user.uid))
-  const createThreadDb = (username, uid)=>{
-    let id = createIdPost()
-    db.collection("posts").doc(id)
-    .set({
-        id,
-        title: form.titleThread().value,
-        description: form.textThread().value,
-        author: username,
-        comments: [],
-        uid,
-        time: new Date().toLocaleDateString()
-      }).then(() => {
-        document.location.reload(true)
-      }).catch(error => {
-        console.log("error")
-    })
-  }
-  showLoading()
-}
-
-
 function createIdPost(){
   return Math.random().toString(16).substring(3, 16)
+}
+
+function listenLengthText(description){
+  let lengthDescription = description.length
+  if(lengthDescription > 700) return "<span><button onclick='readMoreThread(this)'>Ler mais</button></span>"
+  else return ""
+} 
+
+function listenClassRead(description){
+  let lengthDescription = description.length
+  if(lengthDescription > 700) return "putText_Post"
+  else return ""
+}
+
+function readMoreThread(button){
+  let textThread = button.parentNode.parentNode.querySelector(".text-post")
+  textThread.classList.toggle("putText_Post")
+  button.innerHTML === "Ler mais" ? button.innerHTML = "Ler menos" : button.innerHTML = "Ler mais"
+}
+
+// comments
+
+function createComments(comments){
+  let comments_html = ""
+  comments.forEach(comment=>{
+    comments_html += `
+      <p>${comment.description}</p>
+      <p class="stamp-comment">${comment.author} - ${comment.time}</p>
+      `
+  })
+  return comments_html
 }
 
 function openPopUpComment(idPost){
@@ -263,6 +209,56 @@ function submitComment(idPost, username){
       })
       showLoading()
 }
+
+function toggleButtonComments(element) {
+
+  let commentsContainer = element.parentNode.parentNode.querySelector(".comments-container")
+  commentsContainer.classList.toggle('comments-container-visible')
+
+  if(commentsContainer.classList.contains('comments-container-visible')) {
+    element.innerHTML = `Ocultar comentários`
+  }
+  else {
+    element.innerHTML = `Ver comentários`
+  }
+}
+
+// buttons menu
+ 
+function signOut() {
+    firebase.auth().signOut().then(() => {
+        window.location.href = "/login"
+    }).catch(() => {
+        alert('erro ao fazer logout')
+    })
+
+}
+
+function goToAccount() {
+  window.location.href = "/account"
+}
+
+// 
+
+function  appendUsername() {
+  // verificando se o user está on
+  return new Promise((res, rej) => {
+    auth.onAuthStateChanged(userOn => {
+      if(userOn){
+        let userInDB = db.collection("users").doc(userOn.uid)
+        userInDB.get().then((doc) => {
+          let username = doc.data().user.username
+            res(username)
+        }) 
+      }
+      else{
+        rej("Deu tudo errado")
+      }
+    })
+  })  
+}
+
+// loading
 
 function showLoading() {
   const loadingContainer = document.createElement('div')

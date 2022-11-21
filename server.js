@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const apiRoute = require('./routes/api')
-
+const port = 8080
 const app = express()
 
 app.set("views", path.join (__dirname, "views"))
@@ -31,12 +31,6 @@ app.get("/account", (req, res) => {
 })
 
 
-
-
-
-
-
-const port = 3000
 app.listen(port, () => {
     console.log("server running on port", port);
 })
