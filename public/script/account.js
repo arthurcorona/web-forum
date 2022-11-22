@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
             showLoading()
         })
 
-
 function getInfosUser() {
   return new Promise((res, rej) => {
     auth.onAuthStateChanged(userOn => {
@@ -11,44 +10,53 @@ function getInfosUser() {
         userInDB.get().then((doc) => { 
           let username = doc.data().user.username
           let sinceDate = doc.data().user.since_date
-            res(username, sinceDate)
-              }).catch(error => {
+          // let teste = username + sinceDate
+          //   res(teste)
+            res(username)
+            res(sinceDate)
+          }).catch(error => {
                 rej(error);
         })
     })
   })  
 }
-  
 
-// function getUserDate() {
-//   return new Promise((res, rej) => {
-//     auth.onAuthStateChanged(userOn => {
-//       let userInDB = db.collection("users").doc(userOn.uid)
-//       userInDB.get().then((doc) => {
-//         let sinceDate = doc.data().user.since_date
-//         res(sinceDate)
-//           }).catch(error => {
-//             rej(error);
-//       })
-//     })
-//   })
-// }
+//o erro está no then. que retorna uma promisse, por isso não retorna a imagem
+
+function load() {
+  
+}
 
 function loadInfoUser() {
-    getInfosUser().then(username => {
+    getInfosUser().then((username, sinceDate) => {
     document.querySelector(".user-information")
         .innerHTML += `
             <div>
                 <img class="image-profile" src="public/images/default-user-img.png" alt="">
             </div>
             <ul class="users-info">   
-                <h3 class="since-data">${sinceDate}</h3>
-                <h3 class="name-user">${username}</h3>
-                <h3 class="posts-quantity">123</h3>
+                <h3 class="name-user"> ${username}</h3>
+                <h3 class="since-date">Conta criada em ${sinceDate}</h3>
+                <h3 class="posts-quantity"></h3>
             </ul>
         `   
   }
 )}
+
+// buttons menu
+ 
+function signOut() {
+  firebase.auth().signOut().then(() => {
+      window.location.href = "/login"
+  }).catch(() => {
+      alert('erro ao fazer logout')
+  })
+
+}
+
+function goToAccount() {
+window.location.href = "/account"
+}
 
 // loading
 

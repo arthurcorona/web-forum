@@ -29,21 +29,21 @@ function openPopUp(postId) {
           <i class="uil uil-multiply"></i>
           </span>
 
-          <p class="title-popUp">Criar Publicação</p>    
+          <p class="title-popUp">CREATE POST</p>    
 
           <section>
               <div class="img-user-popUp">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                  <img src="public/images/default-user-img.png" alt=""">
               </div>
               <p class="username-popup">${username}</p>
           </section>
 
           <form class="thread-form">
-            <input oninput="onChangeThreadSubmit()" type="text" maxLength="100" id="title-thread" class="thread-title" placeholder="Titulo">
-            <label>Digite seu texto:</label>
+            <input oninput="onChangeThreadSubmit()" type="text" maxLength="100" id="title-thread" class="thread-title" placeholder="post title">
+            <label class="label-popup">type your text:</label>
             <textarea oninput="onChangeThreadSubmit()" id="text-thread" class="thread-text"></textarea> 
           </form>
-          <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+          <button onclick="submitThread('${username}')" disabled="true" id="submit-thread" class="submit-thread" type="submit">submit</button>
         </div>
       </div>`
   }).catch(error => {
@@ -66,8 +66,8 @@ function createPost(post){
             <p class="timestamp">${post.author} - ${post.time}</p>
           </div>
           <div class="buttons_comments">
-            <button onclick="openPopUpComment('${post.id}')">Criar comentário</button>
-            <button onclick="toggleButtonComments(this)">Ver comentários</button>
+            <button onclick="openPopUpComment('${post.id}')">create comment</button>
+            <button onclick="toggleButtonComments(this)">show comments</button>
           </div>
           <div class="comments-container">
             ${createComments(post.comments)}
@@ -167,20 +167,20 @@ function openPopUpComment(idPost){
         <i class="uil uil-multiply"></i>
         </span>
 
-        <p class="title-popUp">Criar Comentário</p>    
+        <p class="title-popUp">CREATE COMMENT</p>    
 
         <section>
             <div class="img-user-popUp">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png">
+                <img src="public/images/default-user-img.png">
             </div>
             <p class="username-popup">${username}</p>
         </section>
 
         <form class="thread-form">
-          <label>Digite seu comentário:</label>
+          <label class="label-popup">type your comment:</label>
           <textarea id="text-comment" class="thread-text"></textarea> 
         </form>
-        <button onclick="submitComment('${idPost}', '${username}')" id="submit-thread" class="submit-thread" type="submit">Enviar</button>
+        <button onclick="submitComment('${idPost}', '${username}')" id="submit-thread" class="submit-thread" type="submit">submit</button>
       </div>
     </div>`
       
@@ -216,10 +216,10 @@ function toggleButtonComments(element) {
   commentsContainer.classList.toggle('comments-container-visible')
 
   if(commentsContainer.classList.contains('comments-container-visible')) {
-    element.innerHTML = `Ocultar comentários`
+    element.innerHTML = `hide comments`
   }
   else {
-    element.innerHTML = `Ver comentários`
+    element.innerHTML = `show comments`
   }
 }
 
@@ -252,7 +252,7 @@ function  appendUsername() {
         }) 
       }
       else{
-        rej("Deu tudo errado")
+        rej("Xurim, você por aqui?")
       }
     })
   })  

@@ -55,6 +55,10 @@
     transition: 0.3s;
 }
 
+.label-popup {
+    margin-bottom: .5rem;
+}
+
 #popup-container{
     position: fixed;
     top: 0;

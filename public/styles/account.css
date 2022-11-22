@@ -17,6 +17,10 @@
     padding: 2rem;
 }
 
+.name-user {
+    color: white;
+}
+
 /* loading */
 
 .loading-container{
