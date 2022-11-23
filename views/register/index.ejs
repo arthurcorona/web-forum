@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,29 +15,29 @@
         <div class="container centralize">
             <form>
                 <div class="form-field">
-                    <div><label>Nome</label></div>
+                    <div><label>Name</label></div>
                     <input id="username" type="name" placeholder="insira seu nome">
                 </div>
                 <div>
                     <div><label>Email</label></div>
-                    <input id="email" type="email" placeholder="email" onchange="onChangeEmail()"/>
+                    <input id="email" type="email" placeholder="email" oninput="onChangeEmail()"/>
                     <div class="error" id="error-email">Email é obrigatório</div>
                     <div class="error" id="invalid-email">Email é inválido</div>
                 </div>
                 <div class="form-field">
-                    <div><label>Criar Senha</label></div>
-                    <input onchange="onChangePassword()" id="password" type="password" placeholder="senha" />
+                    <div><label>Create Password</label></div>
+                    <input oninput="onChangePassword()" id="password" type="password" placeholder="senha" />
                     <div class="error" id="error-password">Senha é obrigatória</div>
                     <div class="error" id="passord-min-length">Senha é inválida</div>
                 </div>
                 <div class="form-field">
-                    <div><label>confirmar Senha</label></div>
-                    <input onchange="onChangeConfirmPassword()" id="confirm-password" type="password" placeholder="confirmar senha" />
+                    <div><label>Confirm password</label></div>
+                    <input oninput="onChangeConfirmPassword()" id="confirm-password" type="password" placeholder="confirm password" />
                     <div class="error" id="password-doesnt-match-error">As senhas estão diferentes</div>
                 </div>
             
                 <div>
-                    <button onclick="register()" disabled="true" id="register-button" class="button-bottom" type="button">Registrar</button>
+                    <button onclick="register()" disabled="true" id="register-button" class="button-bottom" type="button">Register</button>
                 </div>
                 <div>
                     <button onclick="login()" class="button-bottom" type="button">Login</button>

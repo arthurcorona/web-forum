@@ -26,10 +26,10 @@ function loginSinion() {
 
 function getErroeMessage(error) {
     if (error.code =="auth/user-not-found") {
-        return "Usuário não encontrádo"
+        return "user dont found"
     }
     if (error.code =="auth/wrong-password") {
-        return "senha inválida"
+        return "invalid password"
     }
     return error.message
 }

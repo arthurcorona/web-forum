@@ -1,19 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+            // loadHeaderAccount()
             loadInfoUser()
             showLoading()
+            loadSinceDateUser()
         })
 
-function getInfosUser() {
+function getUsername() {
   return new Promise((res, rej) => {
     auth.onAuthStateChanged(userOn => {
         let userInDB = db.collection("users").doc(userOn.uid)
         userInDB.get().then((doc) => { 
           let username = doc.data().user.username
-          let sinceDate = doc.data().user.since_date
-          // let teste = username + sinceDate
-          //   res(teste)
-            res(username)
-            res(sinceDate)
+          res(username)        
           }).catch(error => {
                 rej(error);
         })
@@ -21,27 +19,61 @@ function getInfosUser() {
   })  
 }
 
-//o erro está no then. que retorna uma promisse, por isso não retorna a imagem
-
-function load() {
-  
+function getSinceDatUser() {
+  return new Promise((res, rej) => {
+    auth.onAuthStateChanged(userOn => {
+        let userInDB = db.collection("users").doc(userOn.uid)
+        userInDB.get().then((doc) => { 
+          let sinceDate = doc.data().user.since_date 
+          res(sinceDate)       
+          }).catch(error => {
+                rej(error);
+        })
+    })
+  })
 }
 
+//caso eu chame o res(sinceDate) do getInfosUser() antes, ele transformará o username em data,porque no then abaixo só pega 
+
 function loadInfoUser() {
-    getInfosUser().then((username, sinceDate) => {
+    getUsername().then((username) => {
     document.querySelector(".user-information")
         .innerHTML += `
             <div>
                 <img class="image-profile" src="public/images/default-user-img.png" alt="">
             </div>
-            <ul class="users-info">   
-                <h3 class="name-user"> ${username}</h3>
-                <h3 class="since-date">Conta criada em ${sinceDate}</h3>
+            <ul class="users-info">
+                <h3 class="name-user">${username}</h3>
+                <!-- código de antes<h3 class="since-date">Account created at sinceDate</h3>-->
                 <h3 class="posts-quantity"></h3>
             </ul>
-        `   
-  }
-)}
+        `
+    }).catch(error => {
+      console.log(error);
+    })
+}
+
+function loadSinceDateUser() {
+  getSinceDatUser().then((sinceDate) => {
+    document.querySelector(".user-information")
+      .innerHTML += `
+      <h3 class="since-date">Account created at ${sinceDate}
+      `
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
+// function loadHeaderAccount() {
+//   getInfosUser().then((username) => {
+//     document.querySelector(".header-account")
+//       .innerHTML += `
+//       <div class="">
+//         <p class="welcome-text">Welcome to SINION,<b class="welcome-username"> ${username}</b>. Be careful what you do, everything is possible on the internet</p>
+//       </div>
+//       `
+//   })
+// }
 
 // buttons menu
  

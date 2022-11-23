@@ -1,3 +1,23 @@
+.header-account {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    /* margin-left: auto;
+    margin-right: auto; */
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+
+}
+
+.welcome-text{
+    color: white;
+}
+
+.welcome-username {
+color: #00ABB3;
+}
+
 .user-information {
     display: flex;
     margin-top: 3rem;
@@ -19,6 +39,17 @@
 
 .name-user {
     color: white;
+    font-size: 2rem;
+}
+
+.since-date {
+    margin-top: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.welcome-text {
+    text-size-adjust: 4rem;
 }
 
 /* loading */

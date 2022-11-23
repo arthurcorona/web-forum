@@ -9,8 +9,8 @@ const form = {
 document.addEventListener("DOMContentLoaded", () => {
       db.collection("posts").get().then(snp=>{
         snp.forEach(post=>{
-          createPost(post.data())
           showLoading()
+          createPost(post.data())
           })
       }).catch(error => {
         console.log(error)
@@ -141,7 +141,7 @@ function listenClassRead(description){
 function readMoreThread(button){
   let textThread = button.parentNode.parentNode.querySelector(".text-post")
   textThread.classList.toggle("putText_Post")
-  button.innerHTML === "Ler mais" ? button.innerHTML = "Ler menos" : button.innerHTML = "Ler mais"
+  button.innerHTML === "Read More" ? button.innerHTML = "Read less" : button.innerHTML = "Read more"
 }
 
 // comments
@@ -158,7 +158,7 @@ function createComments(comments){
 }
 
 function openPopUpComment(idPost){
-  appendUsername().then(username=>{
+  appendUsername().then(username => {
     document.body.innerHTML = document.body.innerHTML += `
     <div id="popup-container">
       <div class="thread-PopUp">
