@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-            // loadHeaderAccount()
-            loadInfoUser()
+            loadHeaderAccount()
+            loadUsername()
             showLoading()
             loadSinceDateUser()
         })
@@ -14,9 +14,9 @@ function getUsername() {
           res(username)        
           }).catch(error => {
                 rej(error);
+            })
         })
-    })
-  })  
+    })    
 }
 
 function getSinceDatUser() {
@@ -35,18 +35,19 @@ function getSinceDatUser() {
 
 //caso eu chame o res(sinceDate) do getInfosUser() antes, ele transformará o username em data,porque no then abaixo só pega 
 
-function loadInfoUser() {
+function loadUsername() {
     getUsername().then((username) => {
     document.querySelector(".user-information")
         .innerHTML += `
-            <div>
+          <div class="image-name">
+            <div class="">
                 <img class="image-profile" src="public/images/default-user-img.png" alt="">
             </div>
             <ul class="users-info">
-                <h3 class="name-user">${username}</h3>
-                <!-- código de antes<h3 class="since-date">Account created at sinceDate</h3>-->
-                <h3 class="posts-quantity"></h3>
+              <li class="user-data">${username}</li>
+              <li class="posts-quantity"></li>
             </ul>
+          </div>
         `
     }).catch(error => {
       console.log(error);
@@ -57,23 +58,31 @@ function loadSinceDateUser() {
   getSinceDatUser().then((sinceDate) => {
     document.querySelector(".user-information")
       .innerHTML += `
-      <h3 class="since-date">Account created at ${sinceDate}
+        <div class="allt">
+          <ul class="users-info">
+            <li class="user-data">Account created at ${sinceDate}</li>
+          </ul>
+        </div>
       `
+
   }).catch(error => {
     console.log(error);
   })
 }
 
-// function loadHeaderAccount() {
-//   getInfosUser().then((username) => {
-//     document.querySelector(".header-account")
-//       .innerHTML += `
-//       <div class="">
-//         <p class="welcome-text">Welcome to SINION,<b class="welcome-username"> ${username}</b>. Be careful what you do, everything is possible on the internet</p>
-//       </div>
-//       `
-//   })
-// }
+// criar o html no próprio html, e apenas adicionar as o username e data após ele ficar pronto. Porque não está encontrando o elemento para modificar-lo mas no loading tambem nao esta de primeira no html, tenho que comprarar e ver o que posso fazer.
+
+
+function loadHeaderAccount() {
+  getUsername().then((username) => {
+    document.querySelector(".header-account")
+      .innerHTML += `
+      <div class="">
+        <p class="welcome-text">Welcome to SINION,<b class="welcome-username"> ${username}</b>. Be careful what you do, everything is possible on the internet</p>
+      </div>
+      `
+  })
+}
 
 // buttons menu
  
@@ -93,8 +102,8 @@ window.location.href = "/account"
 // loading
 
 function showLoading() {
-  const loadingContainer = document.createElement('div')
-  const gifLoading = document.createElement('img')
+  let loadingContainer = document.createElement('div')
+  let gifLoading = document.createElement('img')
 
   loadingContainer.classList.add('loading-container')
 
@@ -111,3 +120,4 @@ function showLoading() {
 function hideLoading() {
   document.querySelector('.loading-container').remove()
 }
+

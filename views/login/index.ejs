@@ -18,13 +18,13 @@
         <form>
             <div class="form-field">
                 <div><label>Email:</label></div>
-                <input onchange="onChangeEmail()" id="email" type="email" name="email" placeholder="email"/>
+                <input oninput="onChangeEmail()" id="email" type="email" name="email" placeholder="email"/>
                 <div class="error" id="error-email">mandatory email!</div>
                 <div class="error" id="invalid-email">invalid email!</div>
             </div>
             <div class="form-field">
                 <div><label>Password:</label></div>
-                <input onchange="onChangePassword()" type="password" id="password" name="password" placeholder="senha"/>
+                <input oninput="onChangePassword()" type="password" id="password" name="password" placeholder="senha"/>
                 <div class="error" id="password-error">mandatory password!</div>
             </div>
             <div>

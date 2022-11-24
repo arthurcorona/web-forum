@@ -18,11 +18,22 @@
 color: #00ABB3;
 }
 
-.user-information {
+.user-data {
+    margin-top: 1rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.image-name {
     display: flex;
+}
+
+.user-information {
+    display: inline;
     margin-top: 3rem;
     margin-bottom: 3rem;
     margin-left: 3rem;
+
 }
 
 .user-information img {
@@ -35,17 +46,6 @@ color: #00ABB3;
 
 .users-info {
     padding: 2rem;
-}
-
-.name-user {
-    color: white;
-    font-size: 2rem;
-}
-
-.since-date {
-    margin-top: 1rem;
-    color: white;
-    font-size: 1.5rem;
 }
 
 .welcome-text {
