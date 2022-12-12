@@ -30,7 +30,6 @@ app.get("/account", (req, res) => {
     res.render("account")
 })
 
-
 app.listen(port, () => {
     console.log("server running on port", port);
 })
