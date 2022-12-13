@@ -1,5 +1,5 @@
 module.exports = {
-    posters: {
+    posts: {
         
     },
     

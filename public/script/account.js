@@ -41,7 +41,7 @@ function loadUsername() {
         .innerHTML += `
           <div class="image-name">
             <div class="">
-                <img class="image-profile" src="public/images/default-user-img.png" alt="">
+                <img class="image-profile" src="../../public/images/default-user-img.svg" alt="">
             </div>
             <ul class="users-info">
               <li class="user-data">${username}</li>

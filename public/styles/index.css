@@ -4,7 +4,6 @@
     --backgroundColor: ;
 }
 
-
 .publics-section{
     width: 100%;
     padding: 4rem 3rem;
@@ -38,6 +37,34 @@
 .img-user img{
     height: 100%;
     width: auto;
+}
+
+.delete-icon {
+    width: 20px;
+    float: right;
+}
+
+.delete-icon:hover {
+    cursor: pointer;
+}
+
+.popup-delete {
+    width: 500px;
+    max-height: 3000px;
+    background-color: rgb(47, 43, 43);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.delete-button {
+    padding: 5px;
+    display: flex;
+    display: inline;
+}
+
+.delete-button:hover {
+    cursor: pointer;
 }
 
 .publics-edit button{

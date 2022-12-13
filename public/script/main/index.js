@@ -33,7 +33,7 @@ function openPopUp(postId) {
 
           <section>
               <div class="img-user-popUp">
-                  <img src="public/images/default-user-img.png" alt=""">
+                  <img src="../../public/images/default-user-img.svg" alt=""">
               </div>
               <p class="username-popup">${username}</p>
           </section>
@@ -59,6 +59,7 @@ function createPost(post){
     document.querySelector(".threads-container")
       .innerHTML += ` 
         <li class="thread" id="${post.id}">
+          <img onclick="reallyDeletePost()" class="delete-icon" src="../../public/images/delete-icon.svg">
           <h2 class="title-post">${post.title}</h2>
           <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
           ${listenLengthText(post.description)}
@@ -75,6 +76,37 @@ function createPost(post){
       </li>                                                    
  `                                           
 }
+
+function reallyDeletePost(postId) {
+  appendUsername().then(username=>{
+  document.body.innerHTML += 
+    `
+    <div id="popup-container">
+    <div class="popup-delete">
+            <p class="title-popUp">DELETE POST</p>    
+  
+              <br><hr><br>
+
+            <div>
+                <div class="img-user-popUp">
+                    <img src="../../public/images/default-user-img.svg" alt=""">
+                </div>
+                <p class="username-popup">Do you really want to delete your post, ${username}?</p>
+                <span><button onclick="closePopUp()" class="delete-button">No</button></span>
+                <span><button onclick="deletePost()" class="delete-button">Yes</button></span>
+            </div>
+    </div>
+    </div>
+    
+    `
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
+// function deletePost() {
+  
+// }
 
 
 function submitThread(username){
@@ -171,7 +203,7 @@ function openPopUpComment(idPost){
 
         <section>
             <div class="img-user-popUp">
-                <img src="public/images/default-user-img.png">
+                <img src="../../public/images/default-user-img.svg">
             </div>
             <p class="username-popup">${username}</p>
         </section>
