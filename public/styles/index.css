@@ -57,6 +57,10 @@
     border-radius: 20px;
 }
 
+.text-popup-delete {
+    padding: .5rem;
+}
+
 .delete-button {
     padding: 5px;
     display: flex;
@@ -253,7 +257,6 @@
 .comments-container {
     margin-top: 2rem;
     display: none;
-
 }
 
 .comments-container-visible {

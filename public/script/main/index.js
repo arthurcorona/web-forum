@@ -3,7 +3,8 @@ const form = {
   textThread: () => document.querySelector('#text-thread'),
   submitThreadButton: () => document.querySelector('#submit-thread'),
   ThreadContainer: () => document.querySelector('.thread-container'),
-  textComment: ()=> document.querySelector("#text-comment")
+  textComment: ()=> document.querySelector("#text-comment"),
+  threadID: () => document.getElementById("$(id)")
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,18 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // thread/post
 
-function openPopUp(postId) {
+function openPopUp() {
   appendUsername().then(username=>{
     document.body.innerHTML += `
       <div id="popup-container">
         <div class="thread-PopUp">
-            
           <span class="close-popUp" onclick="closePopUp()">
           <i class="uil uil-multiply"></i>
           </span>
-
-          <p class="title-popUp">CREATE POST</p>    
-
+          <p class="title-popUp">CREATE POST</p>
           <section>
               <div class="img-user-popUp">
                   <img src="../../public/images/default-user-img.svg" alt=""">
@@ -77,38 +75,6 @@ function createPost(post){
  `                                           
 }
 
-function reallyDeletePost(postId) {
-  appendUsername().then(username=>{
-  document.body.innerHTML += 
-    `
-    <div id="popup-container">
-    <div class="popup-delete">
-            <p class="title-popUp">DELETE POST</p>    
-  
-              <br><hr><br>
-
-            <div>
-                <div class="img-user-popUp">
-                    <img src="../../public/images/default-user-img.svg" alt=""">
-                </div>
-                <p class="username-popup">Do you really want to delete your post, ${username}?</p>
-                <span><button onclick="closePopUp()" class="delete-button">No</button></span>
-                <span><button onclick="deletePost()" class="delete-button">Yes</button></span>
-            </div>
-    </div>
-    </div>
-    
-    `
-  }).catch(error => {
-    console.log(error);
-  })
-}
-
-// function deletePost() {
-  
-// }
-
-
 function submitThread(username){
   auth.onAuthStateChanged(user => createThreadDb(username, user.uid))
   const createThreadDb = (username, uid)=>{
@@ -129,6 +95,46 @@ function submitThread(username){
     })
   }
   showLoading()
+}
+
+function reallyDeletePost() {
+  appendUsername().then(username=>{
+  document.body.innerHTML += 
+    `
+    <div id="popup-container">
+    <div class="popup-delete">
+            <p class="title-popUp">DELETE POST</p>    
+              <br><hr><br>
+            <div>
+                <div class="img-user-popUp">
+                    <img src="../../public/images/default-user-img.svg" alt=""">
+                </div>
+                <p class="username-popup text-popup-delete">Do you really want to delete your post, ${username}?</p>
+                <span><button onclick="closePopUp()" class="delete-button">No</button></span>
+                <span><button onclick="deletePost()" class="delete-button">Yes</button></span>
+            </div>
+    </div>
+    </div>
+    
+    `
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
+function deletePost() {
+  let threadID = document.getElementById("$(id)") 
+
+    db.collection('posts')
+      .doc(`${threadID}`).delete()
+        .then(() => {
+            location.reload()
+            console.log("Post successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing post: ", error);
+        });;
+
+      // .doc(array.splice(array.indexOf(array.filter(thread => thread.id === array[Math.floor(Math.random()*array.length - 1)].id)))).delete()
 }
 
 function onChangeThreadSubmit() {
@@ -235,7 +241,6 @@ function submitComment(idPost, username){
       {merge: true})
         .then(()=>{
           location.reload()
-          // loading()
         }).catch(error =>{
           console.log(error)
       })
@@ -284,7 +289,7 @@ function  appendUsername() {
         }) 
       }
       else{
-        rej("Xurim, você por aqui?")
+        rej("error")
       }
     })
   })  

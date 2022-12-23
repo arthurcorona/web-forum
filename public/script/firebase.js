@@ -14,4 +14,4 @@ const firebaseConfig = {
     const auth = firebase.auth() //authenticator firebase
     const storage = firebase.storage() 
     const ref = storage.ref("/folder do firebase") // referencia para a pasta raiz do storage no firebase, da pra especificar ainda mais o arquivo preenchendo o ()
-
+    const getFirestore = getFirestore();
