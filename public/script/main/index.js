@@ -54,10 +54,14 @@ function closePopUp() {
 }
 
 function createPost(post){
+  const user = firebase.auth().currentUser
     document.querySelector(".threads-container")
       .innerHTML += ` 
         <li class="thread" id="${post.id}">
-          <img onclick="reallyDeletePost()" class="delete-icon" src="../../public/images/delete-icon.svg">
+          <img
+            style="display${user.uid == post.uid ? "inline-block" : "none"}"
+            onclick="reallyDeletePost()" class="delete-icon" src="../../public/images/delete-icon.svg">
+          </img>
           <h2 class="title-post">${post.title}</h2>
           <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
           ${listenLengthText(post.description)}
@@ -66,7 +70,7 @@ function createPost(post){
           </div>
           <div class="buttons_comments">
             <button onclick="openPopUpComment('${post.id}')">create comment</button>
-            <button onclick="toggleButtonComments(this)">show comments</button>
+            <img class="show-comment" onclick="toggleButtonComments(this)" src="../../public/images/talk.svg">
           </div>
           <div class="comments-container">
             ${createComments(post.comments)}
@@ -97,8 +101,8 @@ function submitThread(username){
   showLoading()
 }
 
-function reallyDeletePost() {
-  appendUsername().then(username=>{
+function reallyDeletePost(id_delete) {
+  appendUsername().then(username => {
   document.body.innerHTML += 
     `
     <div id="popup-container">
@@ -111,7 +115,7 @@ function reallyDeletePost() {
                 </div>
                 <p class="username-popup text-popup-delete">Do you really want to delete your post, ${username}?</p>
                 <span><button onclick="closePopUp()" class="delete-button">No</button></span>
-                <span><button onclick="deletePost()" class="delete-button">Yes</button></span>
+                <span><button onclick="deletePost('${id_delete}')" class="delete-button">Yes</button></span>
             </div>
     </div>
     </div>
@@ -133,7 +137,6 @@ function deletePost() {
         }).catch((error) => {
             console.error("Error removing post: ", error);
         });;
-
       // .doc(array.splice(array.indexOf(array.filter(thread => thread.id === array[Math.floor(Math.random()*array.length - 1)].id)))).delete()
 }
 
@@ -253,7 +256,7 @@ function toggleButtonComments(element) {
   commentsContainer.classList.toggle('comments-container-visible')
 
   if(commentsContainer.classList.contains('comments-container-visible')) {
-    element.innerHTML = `hide comments`
+    element.innerHTML = ``
   }
   else {
     element.innerHTML = `show comments`

@@ -14,7 +14,6 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-
 }
 
 .box-edit {
@@ -221,6 +220,14 @@
     cursor: pointer;
 }
 
+.thread span button, .buttons_comments img{
+    width: 20px;
+}
+
+.show-comment:hover {
+    cursor: pointer;
+}
+
 .buttons_comments{
     margin-top: 1rem;
     width: 100%;
@@ -272,4 +279,8 @@
 .stamp-thread {
     margin-top: .3rem;
     font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+
 }

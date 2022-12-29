@@ -13,23 +13,13 @@
     header .header-content span{
         display: flex;
     }
-    header .header-content span button{
-        font-weight: bold;
-        font-size: 1rem;
+    header .header-content span img:nth-child(1){
+        margin-right: 1.5rem;
+    }
+    header .header-content span img:hover{
+        background-color: white;
         color: black;
         cursor: pointer;
-        text-transform: uppercase;
-        background-color: white;
-        box-shadow: 2px 2px rgb(171, 161, 161);
-        border: .1rem solid white;
-        padding: 0.2rem 1rem;
-        border-radius: 20px;
-        transition: 0.2s;
-    }header .header-content span button:nth-child(1){
-        margin-right: 2rem;
-    }header .header-content span button:hover{
-        background-color: white;
-        color: black;
     }
     header .header-content a {
         color: white;
@@ -43,8 +33,9 @@
     <div class="header-content">
         <a href="/"><h1>SINION</h1></a>
         <span>
-            <button class="btn_account" onclick="goToAccount()" type="button">Account</button>
-            <button class="btn_account signOut" onclick="signOut()" type="button">Logout</button>
+            <img width="40px" class="btn-account" onclick="goToAccount()" src="../../../public/images/account.svg">
+            <img width="40px" class="btn-account signOut" onclick="signOut()" src="../../../public/images/logout.svg">
+            <!-- <button class="btn-account signOut" onclick="signOut()" type="button">Logout</button> -->
         </span>
     </div>
 </header>
