@@ -38,7 +38,7 @@ function alertAnonymously() {
           <div id="popup-container">
             <div class="thread-PopUp">
                 <span class="close-popUp" onclick="closePopUp()">
-                <i class="uil uil-multiply"></i>
+                    X
                 </span>
                 <p class="title-popUp">ALERT!</p>
                 <section>

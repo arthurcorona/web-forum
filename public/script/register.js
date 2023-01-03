@@ -111,6 +111,41 @@ function register() {
     })
 }
 
-function loading() {
-    
+
+function alertAnonymously() {
+    document.body.innerHTML += `
+      <div id="popup-container">
+        <div class="thread-PopUp">
+            <span class="close-popUp" onclick="closePopUp()">
+                X
+            </span>
+            <p class="title-popUp">ALERT!</p>
+            <section>
+                <div class="img-user-popUp">
+                    <img src="../../public/images/default-user-img.svg" alt="">
+                </div>
+                <p class="username-popup">Anonymous</p>
+            </section>
+            <p class="popup-text">
+                If you remain anonymous, you can just look at posts and comments. you cannot make comments and posts, nor see your account data
+            </p>
+            <div class="popup-buttons">
+                <button onclick="signInAnonymously()" class="popup-button">Continue Anyway</button>
+                <button onclick="closePopUp()" class="popup-button">Create an Account</button>
+            </div>        
+        </div>
+      </div>`
+}
+
+function signInAnonymously() {
+firebase.auth().signInAnonymously()
+    .then(() => {
+        window.location.href = "/"
+}).catch((error) => {
+    alert(getErrorMessage(error))
+});
+}
+
+function closePopUp() {
+document.getElementById("popup-container").remove()
 }

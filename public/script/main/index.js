@@ -58,10 +58,12 @@ function createPost(post){
     document.querySelector(".threads-container")
       .innerHTML += ` 
         <li class="thread" id="${post.id}">
+        <!-- COMMENTED
           <img
             style="display${user.uid == post.uid ? "inline-block" : "none"}"
             onclick="reallyDeletePost()" class="delete-icon" src="../../public/images/delete-icon.svg">
-          </img>
+          </img> 
+          COMMENTED -->
           <h2 class="title-post">${post.title}</h2>
           <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
           ${listenLengthText(post.description)}

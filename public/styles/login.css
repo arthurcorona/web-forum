@@ -100,8 +100,6 @@ button:disabled {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-.popup-button {
-}
 .img-user-popUp img{
     height: 100%;
     width: auto;
