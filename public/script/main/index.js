@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // thread/post
 
 function openPopUp() {
-  appendUsername().then(username=>{
+  appendUsername().then(username => {
     document.body.innerHTML += `
       <div id="popup-container">
         <div class="thread-PopUp">
@@ -31,7 +31,7 @@ function openPopUp() {
           <p class="title-popUp">CREATE POST</p>
           <section>
               <div class="img-user-popUp">
-                  <img src="../../public/images/default-user-img.svg" alt=""">
+                  <img src="../../public/images/default-user-img.svg" alt="">
               </div>
               <p class="username-popup">${username}</p>
           </section>

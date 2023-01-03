@@ -1,48 +1,115 @@
-
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60vh;
 }
-
 form{
     margin-top: 10%;
     width: 20rem;
 }
-
 input, button {
     padding: .3rem;
     width: 100%;
 }
-
+input, button:hover {
+    background-color: rgb(174, 166, 166); 
+}
 button{
     cursor: pointer;
     width: 100%;
     margin-bottom: .3rem;
 }
-
-.button-bottom {
- 
-}
-
 .form-field {
     margin-bottom: .3rem;
 }
-
 button:disabled {
     opacity: 0.5;
 }
-
 .recover-password {
     background-color: transparent;
     border: none;    
+    color: #fff;
 }
-
+.recover-password:hover {
+    background-color: rgb(0, 0, 0);
+}
 .register {
+    background-color: #fff; 
+}
+.register:hover {
+    background-color: rgb(174, 166, 166); 
+}
+.anonymously {
+    text-align: center;
     background-color: transparent;
+    border: none; 
+    color: #fff;
+}
+#popup-container{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.745);
+    backdrop-filter: blur(1px);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.thread-PopUp{
+    width: 500px;
+    max-height: 3000px;
+    background-color: rgb(47, 43, 43);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+}
+.img-user-popUp{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    
+}
+.thread-PopUp section{
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.351);
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.title-popUp{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.popup-text {
+    margin-top: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+.popup-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.popup-button {
+}
+.img-user-popUp img{
+    height: 100%;
+    width: auto;
+}
+.anonymously:hover {
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+}
 .error {
     color: #977160;
     background: #4e4848;
