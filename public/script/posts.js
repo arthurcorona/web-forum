@@ -1,9 +1,9 @@
 module.exports = {
     posts: [
         {
-            id: "aidi",
-            title: "Titulo",
-            description: "descrição"
+            id: "id",
+            title: "title",
+            description: "description ;)"
         },
     ],
 
@@ -13,11 +13,12 @@ module.exports = {
 
     newPost(title,description) {
 
-        this.posts.push({id:generateID(), title, description}) 
+        this.posts.push({
+            id:generateID(), title, description
+        }) 
     },
 
-    deletePost(id) {
-        
+    deletePost() {
     }
 }
 

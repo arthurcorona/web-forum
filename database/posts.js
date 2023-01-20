@@ -1,9 +1,0 @@
-module.exports = {
-    posts: {
-        
-    },
-    
-    getAll() {
-        
-    } 
-}

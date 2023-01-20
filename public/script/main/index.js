@@ -3,15 +3,16 @@ const form = {
   textThread: () => document.querySelector('#text-thread'),
   submitThreadButton: () => document.querySelector('#submit-thread'),
   ThreadContainer: () => document.querySelector('.thread-container'),
-  textComment: ()=> document.querySelector("#text-comment"),
-  threadID: () => document.getElementById("$(id)")
+  textComment: () => document.querySelector("#text-comment"),
+  threadID: () => document.getElementById(`${id}`)
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-      db.collection("posts").get().then(snp=>{
-        snp.forEach(post=>{
+      db.collection("posts").get().then(snp => {
+        snp.forEach(post => {
           showLoading()
           createPost(post.data())
+          console.log(post.id);
           })
       }).catch(error => {
         console.log(error)
@@ -45,7 +46,7 @@ function openPopUp() {
         </div>
       </div>`
   }).catch(error => {
-    console.log(error)
+    return alert("you´re does not logged!")
   })
 }
 
@@ -55,36 +56,36 @@ function closePopUp() {
 
 function createPost(post){
   const user = firebase.auth().currentUser
-    document.querySelector(".threads-container")
-      .innerHTML += ` 
-        <li class="thread" id="${post.id}">
-        <!-- COMMENTED
-          <img
-            style="display${user.uid == post.uid ? "inline-block" : "none"}"
-            onclick="reallyDeletePost()" class="delete-icon" src="../../public/images/delete-icon.svg">
-          </img> 
-          COMMENTED -->
-          <h2 class="title-post">${post.title}</h2>
-          <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
-          ${listenLengthText(post.description)}
-          <div class="stamp-thread">
-            <p class="timestamp">${post.author} - ${post.time}</p>
-          </div>
-          <div class="buttons_comments">
-            <button onclick="openPopUpComment('${post.id}')">create comment</button>
-            <img class="show-comment" onclick="toggleButtonComments(this)" src="../../public/images/talk.svg">
-          </div>
-          <div class="comments-container">
-            ${createComments(post.comments)}
-          </div>
-      </li>                                                    
- `                                           
+    if(user) {
+      document.querySelector(".threads-container")
+        .innerHTML += ` 
+          <li class="thread" id="${post.id}">
+            <img
+              style="display${user.uid == post.uid ? "inline-block" : "none"}"
+              onclick="reallyDeletePost(${post.id})" class="delete-icon" src="../../public/images/delete-icon.svg">
+            </img> 
+            <h2 class="title-post">${post.title}</h2>
+            <p class="text-post ${listenClassRead(post.description)}">${post.description}</p>
+            ${listenLengthText(post.description)}
+            <div class="stamp-thread">
+              <p class="timestamp">${post.author} - ${post.time}</p>
+            </div>
+            <div class="buttons_comments">
+              <button onclick="openPopUpComment('${post.id}')">create comment</button>
+              <img class="show-comment" onclick="toggleButtonComments(this)" src="../../public/images/talk.svg">
+            </div>
+            <div class="comments-container">
+              ${createComments(post.comments)}
+            </div>
+        </li>                                                    
+            `
+   }   
 }
 
 function submitThread(username){
   auth.onAuthStateChanged(user => createThreadDb(username, user.uid))
-  const createThreadDb = (username, uid)=>{
-    let id = createIdPost()
+  const createThreadDb = (username, uid) => {
+    let id = createIdPost() 
     db.collection("posts").doc(id)
     .set({
         id,
@@ -97,13 +98,13 @@ function submitThread(username){
       }).then(() => {
         document.location.reload(true)
       }).catch(error => {
-        console.log("error")
+        console.log(error)
     })
   }
   showLoading()
 }
 
-function reallyDeletePost(id_delete) {
+function reallyDeletePost(post) {
   appendUsername().then(username => {
   document.body.innerHTML += 
     `
@@ -117,7 +118,7 @@ function reallyDeletePost(id_delete) {
                 </div>
                 <p class="username-popup text-popup-delete">Do you really want to delete your post, ${username}?</p>
                 <span><button onclick="closePopUp()" class="delete-button">No</button></span>
-                <span><button onclick="deletePost('${id_delete}')" class="delete-button">Yes</button></span>
+                <span><button onclick="deletePost(${post.id})" class="delete-button">Yes</button></span>
             </div>
     </div>
     </div>
@@ -128,11 +129,11 @@ function reallyDeletePost(id_delete) {
   })
 }
 
-function deletePost() {
-  let threadID = document.getElementById("$(id)") 
+function deletePost(post) {
+  // let threadID = document.getElementById() 
 
     db.collection('posts')
-      .doc(`${threadID}`).delete()
+      .doc(post.id).delete()
         .then(() => {
             location.reload()
             console.log("Post successfully deleted!");
@@ -282,7 +283,7 @@ function goToAccount() {
 
 // 
 
-function  appendUsername() {
+function  appendUsername() {  
   // verificando se o user está on
   return new Promise((res, rej) => {
     auth.onAuthStateChanged(userOn => {
@@ -294,7 +295,7 @@ function  appendUsername() {
         }) 
       }
       else{
-        rej("error")
+          return alert("you´re does not logged!")
       }
     })
   })  

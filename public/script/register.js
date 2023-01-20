@@ -111,7 +111,6 @@ function register() {
     })
 }
 
-
 function alertAnonymously() {
     document.body.innerHTML += `
       <div id="popup-container">
